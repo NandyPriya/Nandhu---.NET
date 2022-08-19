@@ -1,0 +1,135 @@
+$ git checkout master
+Switched to branch 'master'
+========================BRANCH============================================================
+==============================================================================================         
+
+$ git branch GitNewBranch
+=========================
+$ git branch -a
+  GitNewBranch
+* master
+  remotes/origin/master
+=============================
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+================================
+$ touch a.txt b.txt
+=============================
+$ vi a.txt
+========================
+$ vi b.txt
+=========================
+$ git add a.txt
+warning: in the working copy of 'a.txt', LF will be replaced by CRLF the next time Git touches it
+===============================================================================
+$ git add b.txt
+warning: in the working copy of 'b.txt', LF will be replaced by CRLF the next time Git touches it
+================================================================================
+$ git commit -m "add files in new branch"
+[GitNewBranch 0ddd651] add files in new branch
+ 2 files changed, 3 insertions(+)
+ create mode 100644 a.txt
+====================================================
+$ git status
+On branch GitNewBranch
+nothing to commit, working tree clean
+=================================================
+git remote add origin1 https://github.com/NandyPriya/gass2.git
+
+================================================================
+$ git push origin1 GitNewBranch
+==============================================================
+$ git pull origin1 GitNewBranch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 730 bytes | 4.00 KiB/s, done.
+From https://github.com/NandyPriya/gass2
+ * branch            GitNewBranch -> FETCH_HEAD
+   0ddd651..ba361a6  GitNewBranch -> origin1/GitNewBranch
+Updating 0ddd651..ba361a6
+Fast-forward
+ a.txt | 1 +
+ 1 file changed, 1 insertion(+)
+========================================================
+=================MERGE====================================
+=========================================================
+$ git checkout master
+Switched to branch 'master'
+========================================================
+$ git diff master GitNewBranch
+diff --git a/a.txt b/a.txt
+new file mode 100644
+index 0000000..757a7e4
+--- /dev/null
++++ b/a.txt
+@@ -0,0 +1,3 @@
++hi
++this is the first program in new branch
++this is the first pull request
+diff --git a/b.txt b/b.txt
+index e69de29..4af4c5f 100644
+--- a/b.txt
++++ b/b.txt
+@@ -0,0 +1 @@
++hi this is the second program in new branch
+============================================================
+$ git diff GitNewBranch master
+diff --git a/a.txt b/a.txt
+deleted file mode 100644
+index 757a7e4..0000000
+--- a/a.txt
++++ /dev/null
+@@ -1,3 +0,0 @@
+-hi
+-this is the first program in new branch
+-this is the first pull request
+diff --git a/b.txt b/b.txt
+index 4af4c5f..e69de29 100644
+--- a/b.txt
++++ b/b.txt
+@@ -1 +0,0 @@
+-hi this is the second program in new branch
+===============================================================
+$ git config --global difftool.p4merge.path 'D:\P4mergetool\p4merge.exe'
+============================================================
+$ git config --global difftool.prompt false
+=============================================
+$ git config --global merge.tool p4merge
+==================================================
+$ git config --global mergetool.p4merge.path 'D:\P4mergetool\p4merge.exe'
+=====================================================================
+$ git config --global mergetool.prompt false
+=========================================================
+$ git config --global --list
+user.name=Nandhinipriya
+user.email=nandhinipriya745@gmail.com
+difftool.p4merge.path=D:\P4mergetool\p4merge.exe
+difftool.prompt=false
+merge.tool=p4merge
+mergetool.p4merge.path=D:\P4mergetool\p4merge.exe
+mergetool.prompt=false
+==========================================================
+$ git difftool GitNewBranch master
+======================================================
+$ git merge GitNewBranch
+master
+Updating 35f080a..ba361a6
+Fast-forward
+ a.txt | 3 +++
+ b.txt | 1 +
+ 2 files changed, 4 insertions(+)
+ create mode 100644 a.txt
+=====================================================
+$ git log --oneline --graph --decorate
+* ba361a6 (HEAD -> master, origin1/GitNewBranch, GitNewBranch) Update a.txt
+* 0ddd651 add files in new branch
+* 35f080a (origin/master) create 2log file and log dir
+============================================================
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was ba361a6).
+=====================================================
+
+
+
