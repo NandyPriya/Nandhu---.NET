@@ -7,7 +7,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            /*int i1, j1, max, min;
+            1)     int i1, j1, max, min;
             Console.WriteLine("enter a first number");
             i1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("enter a second number");
@@ -16,9 +16,9 @@ namespace ConsoleApp1
             min = ((i1 + j1 - Math.Abs(i1 - j1)) / 2);
             Console.WriteLine("Maximum = " + max);
             Console.WriteLine("Minimum = " + min);
-            Console.WriteLine("====================================================");
+            Console.WriteLine("=====================================================================================================================================");
 
-            int i, j, k;
+            2)      int i, j, k;
             Console.WriteLine("enter a first number");
             i = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("enter a second number");
@@ -45,18 +45,18 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("pls enter number > 0");
             }
-            Console.WriteLine("====================================================");
+            Console.WriteLine("======================================================================================================================================");
 
-            char t, n;
+            3)        char t, n;
             Console.WriteLine("enter a first character");
             t = Convert.ToChar(Console.ReadLine());
             Console.WriteLine("enter a second character");
             n = Convert.ToChar(Console.ReadLine());
             bool ans = t.Equals(n);
             Console.WriteLine("compare twocharacter is" + ans);
-            Console.WriteLine("====================================================");
+            Console.WriteLine("======================================================================================================================================");
 
-            string o, p;
+            4)         string o, p;
             Console.WriteLine("enter a first string");
             o = Console.ReadLine();
             Console.WriteLine("enter a second string");
@@ -70,9 +70,9 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("false");
             }
-            Console.WriteLine("====================================================");
+            Console.WriteLine("======================================================================================================================================");
 
-            int l, f;
+            5)        int l, f;
             Console.WriteLine("enter a first number");
             l = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("enter a second number");
@@ -86,9 +86,9 @@ namespace ConsoleApp1
                 Console.WriteLine("biggest number is" + f);
             }
             
-            Console.WriteLine("====================================================");
+            Console.WriteLine("======================================================================================================================================");
 
-            int h;
+            6)       int h;
             Console.WriteLine("enter a year");
             h = Convert.ToInt32(Console.ReadLine());
             if(((h%4==0)&&(h%100!=0))|| (h % 400 == 0))
@@ -100,9 +100,9 @@ namespace ConsoleApp1
                 Console.WriteLine("{0} is not a  leap year", h);
             }
 
-            Console.WriteLine("====================================================");
+            Console.WriteLine("======================================================================================================================================");
 
-            int m, d, y;
+            7)         int m, d, y;
             Console.WriteLine("enter a first subject");
             m = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("enter a second subject");
@@ -128,9 +128,9 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("fail");
             }
-            Console.WriteLine("===================================================="); 
-            Console.WriteLine("===================================================="); 
-            for(int x=1;x<=5;x++)
+            Console.WriteLine("======================================================================================================================================"); 
+           
+            8)           for(int x=1;x<=5;x++)
             {
                 for(int c=1;c<=x;c++)
                 {
@@ -139,8 +139,8 @@ namespace ConsoleApp1
                 Console.WriteLine();
             }
             
-            Console.WriteLine("===================================================="); 
-            int e;int s1=0;
+            Console.WriteLine("======================================================================================================================================"); 
+            9)       int e;int s1=0;
             Console.WriteLine("enter a n value");
             e = Convert.ToInt32(Console.ReadLine());
             for(int b=1;b<=e;b++)
@@ -155,9 +155,9 @@ namespace ConsoleApp1
                 
             }
             Console.WriteLine("sum of odd natural numbers is" + s1);
-            Console.WriteLine("===================================================="); 
+            Console.WriteLine("======================================================================================================================================"); 
 
-             int u,rem,rev=0;
+             10)             int u,rem,rev=0;
             Console.WriteLine("enter a number");
             u = Convert.ToInt32(Console.ReadLine());
             while(u!=0)
@@ -166,8 +166,8 @@ namespace ConsoleApp1
                 u /= 10;
             }
             Console.WriteLine("reverse number is "+rev);
-            Console.WriteLine("===================================================="); 
-                int sum = 0;
+            Console.WriteLine("======================================================================================================================================"); 
+            11)           int sum = 0;
             for(int s=100;s<=200;s++)
             {
 
@@ -175,8 +175,8 @@ namespace ConsoleApp1
                 
             }
             Console.WriteLine("The sum of numbers between 100 and 200:" + sum);
-            Console.WriteLine("====================================================");
-             int sum1 = 0;
+            Console.WriteLine("======================================================================================================================================");
+             12)       int sum1 = 0;
             for (int r = 100; r <= 200; r++)
             {
                 if (r % 9 == 0) {
@@ -187,8 +187,8 @@ namespace ConsoleApp1
 
             }
             Console.WriteLine("The sum:" + sum1);
-            Console.WriteLine("====================================================");
-            int q;
+            Console.WriteLine("======================================================================================================================================");
+           /* int q;
             Console.WriteLine("enter a number");
             q = Convert.ToInt32(Console.ReadLine());
             if (q == 0)
@@ -266,8 +266,8 @@ namespace ConsoleApp1
                 
             }
             Console.WriteLine("Crossed Over");
-            Console.WriteLine("====================================================");*/
-            /*int initial = 100,hit1=10,miss = -20;
+            Console.WriteLine("===================================================================================================================================");*/
+            16)      int initial = 100,hit1=10,miss = -20;
             int remain=0;
             Console.WriteLine("enter whether hit or miss");
             for (int i=1;i<=4;i++)
@@ -288,7 +288,7 @@ namespace ConsoleApp1
             Console.WriteLine("EXAMPLE OUTPUT:"+remain); */
           
             Console.ReadLine();
-
+ Console.WriteLine("=================================================================================================================================================");
         }
     }
     }
