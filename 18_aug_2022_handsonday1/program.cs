@@ -428,4 +428,20 @@ namespace _3rdday_15th
         }
     }
 }
+======================================================================================================================================================================
+    16)   string a, b;
+            Console.WriteLine("enter firstname act as a userid");
+            a= Console.ReadLine();
+            Console.WriteLine("enter lastname act as a password");
+            b = Console.ReadLine();
+            if((a=="nandhini")&&( b=="nan5601"))
+                    {
+                Console.WriteLine("User successfully logged in,Welcome to my app");
 
+            }
+            else
+            {
+                Console.WriteLine("Incorrect username or password");
+            }
+            Console.Read();
+=====================================================================================================================================================================
