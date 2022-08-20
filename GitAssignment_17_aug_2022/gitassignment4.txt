@@ -1,0 +1,114 @@
+$ git init gitass4
+Initialized empty Git repository in D:/Git Programs/gitass4/.git/
+===========================================================================
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+============================================================================
+$ git checkout -b GitWork
+Switched to a new branch 'GitWork'
+============================================================================
+$ touch hello.xml
+==============================================================================
+$ vi hello.xml
+==============================================================================
+$ cat hello.xml
+hi
+this is the fourth assignment of git programs
+i created new branch(GitWork).you are  in this branch.
+==============================================================================
+$ git add .
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the next time Git touches it
+==============================================================================
+$ git commit -m "i created hello.xml and add the contents"
+[GitWork (root-commit) 2c0c7d5] i created hello.xml and add the contents
+ 1 file changed, 4 insertions(+)
+ create mode 100644 hello.xml
+=====================================================================================
+$ git checkout master
+Switched to branch 'master'
+======================================================================================
+$ touch hello.xml
+=========================================================================
+$ vi hello.xml
+===========================================================================
+$ cat hello.xml
+hi
+this is the fourth assignment of git programs
+i created new branch(GitWork).you are  in this branch.
+=====================================================
+this content is created in master branch in the same file(hello.xml)
+=========================================================================
+$ git add hello.xml
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the next time Git touches it
+=======================================================================
+$ git commit -m "i created hello.xmlin master branch"
+[master 4c85059] i created hello.xmlin master branch
+ 1 file changed, 2 insertions(+)
+==========================================================================
+$ git log --oneline --graph --decorate --all
+* 4c85059 (HEAD -> master) i created hello.xmlin master branch
+* 2c0c7d5 (GitWork) i created hello.xml and add the contents
+============================================================================
+$ git difftool GitWork master
+===============================================================================
+$ git merge GitWork master
+Already up to date.
+=================================================================================
+$ git checkout GitWork
+Switched to branch 'GitWork'
+Your branch is behind 'origin/GitWork' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+==================================================================================
+$ vi hello.xml
+===================================================================
+$ git add .
+warning: in the working copy of 'gitass4/hello.xml', LF will be replaced by CRLF the next time Git touches it
+====================================================================================
+$ git commit -m"update a hello.xml"
+[GitWork 392349d] update a hello.xml
+ 1 file changed, 1 insertion(+)
+ create mode 100644 gitass4/hello.xml
+=======================================================================================
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+=====================================================================================
+$ git merge GitWork
+Auto-merging gitass4/hello.xml
+CONFLICT (add/add): Merge conflict in gitass4/hello.xml
+Automatic merge failed; fix conflicts and then commit the result.
+========================================================================================
+$ vi hello.xml
+===========================================================================================
+$ git add .
+===========================================================================================
+$ git commit -m"resolve conflict in hello.xml"
+[master 089c24b] resolve conflict in hello.xml
+=================================================================================
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+============================================================================
+$ touch .gitignore
+==============================================================================
+$ vi .gitignore
+================================================================================
+$ git add .gitignore
+=====================================
+$ git commit -m "modified in .gitignore"
+===========================================
+$ git status
+===========================================================
+$ git branch -a
+===========================
+$ git branch -D GitWork
+=============================
+$ git log --oneline --graph --decorate
+=====================================
