@@ -258,15 +258,15 @@ namespace ConsoleApp1
 
                     break;
             }
-             Console.WriteLine("====================================================");
-            for(int i=0,j=25;i+j>=i; i++,j--)
+             Console.WriteLine("====================================================");*/
+           15)     for(int i=0,j=25;i<=j; i++,j--)
             {
                
                 Console.WriteLine(i+" "+j);
                 
             }
             Console.WriteLine("Crossed Over");
-            Console.WriteLine("===================================================================================================================================");*/
+            Console.WriteLine("===================================================================================================================================");
             16)      int initial = 100,hit1=10,miss = -20;
             int remain=0;
             Console.WriteLine("enter whether hit or miss");
