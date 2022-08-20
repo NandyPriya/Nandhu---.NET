@@ -188,74 +188,75 @@ namespace ConsoleApp1
             }
             Console.WriteLine("The sum:" + sum1);
             Console.WriteLine("======================================================================================================================================");
-           /* int q;
+           13)   int q;
             Console.WriteLine("enter a number");
             q = Convert.ToInt32(Console.ReadLine());
-            if (q == 0)
+            if(q<=100)
             {
-                Console.WriteLine("number is zero");
+                if (q == 0)
+                {
+                    Console.WriteLine("number is zero");
+
+                }
+                else if (q % 2 == 0)
+                {
+
+                    if (q % 10 == 0)
+                    {
+                        Console.WriteLine("number is multiple of 10 ");
+
+                    }
+                    Console.WriteLine("number is even");
+                }
+                else 
+                {
+                    Console.WriteLine("number is odd");
+                }
 
             }
-            if (q % 2 == 0)
+            else
             {
-                Console.WriteLine("number is even");
-            }
-            if (q % 2 != 0)
-            {
-                Console.WriteLine("number is odd");
-            }
-
-            if (q % 10 == 0)
-            {
-                Console.WriteLine("number is multiple of 10 ");
-
-            }
-            if (q > 100)
-            {
-                Console.WriteLine("number is too large");
+                if (q > 100)
+                {
+                    Console.WriteLine("number is too large");
 
 
+                }
             }
              Console.WriteLine("====================================================");
             int l;
-            Console.WriteLine("enter a userchoice");
+           Console.WriteLine("enter a number");
            
-            Console.WriteLine("1.zero \n 2.odd \n 3.even \n 4.multiple of 10 \n 5.greater than 100");
+           
             l = Convert.ToInt32(Console.ReadLine());
-            switch (l)
+            switch (l>100)
             {
-                case 1:if (l == 0)
+                case true:
+                    
+                        Console.WriteLine("number is greater than 100");
+                    
+                    break;
+                case false:
+                    switch(l==0)
                     {
+                        case true:
                         Console.WriteLine("number is zero");
+                            break;
+                        case false:
+                            if (l % 2 != 0)
+                            {
+                                Console.WriteLine("number is odd");
+                            }
+                            else
+                            {
+                                Console.WriteLine("number is even");
+                            }
+                            break;
                     }
                     break;
-                case 2:if (l%2!=0)
-                    {
-                        Console.WriteLine("number is zero");
-                    } break;
-                case 3:if (l % 2 == 0)
-                    {
-                        Console.WriteLine("number is zero");
-                        
-                    }
-                    break;
-                case 4:
-                    if (l % 10 == 0)
-                    {
-                        Console.WriteLine("number is zero");
-
-                    }
-                    break;
-                case 5:
-                    if (l>100)
-                    {
-                        Console.WriteLine("number is zero");
-
-                    }
-                    break;
+                
                 default:
-                    Console.WriteLine("pls enter valid number");
-
+                    
                     break;
             }
              Console.WriteLine("====================================================");*/
