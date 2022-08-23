@@ -1,0 +1,16 @@
+
+            string o, p;
+            Console.WriteLine("enter a first string");
+            o = Console.ReadLine();
+            Console.WriteLine("enter a second string");
+            p = Console.ReadLine();
+
+            if (o == p)
+            {
+                Console.WriteLine("true");
+            }
+            else
+            {
+                Console.WriteLine("false");
+            }
+            Console.WriteLine

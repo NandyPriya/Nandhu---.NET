@@ -1,0 +1,8 @@
+        char t, n;
+            Console.WriteLine("enter a first character");
+            t = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("enter a second character");
+            n = Convert.ToChar(Console.ReadLine());
+            bool ans = t.Equals(n);
+            Console.WriteLine("compare twocharacter is" + ans);
+            Console.WriteLine

@@ -1,0 +1,35 @@
+            int q;
+            Console.WriteLine("enter a number");
+            q = Convert.ToInt32(Console.ReadLine());
+            if(q<=100)
+            {
+                if (q == 0)
+                {
+                    Console.WriteLine("number is zero");
+
+                }
+                else if (q % 2 == 0)
+                {
+
+                    if (q % 10 == 0)
+                    {
+                        Console.WriteLine("number is multiple of 10 ");
+
+                    }
+                    Console.WriteLine("number is even");
+                }
+                else 
+                {
+                    Console.WriteLine("number is odd");
+                }
+
+            }
+            else
+            {
+                if (q > 100)
+                {
+                    Console.WriteLine("number is too large");
+
+
+                }
+            }

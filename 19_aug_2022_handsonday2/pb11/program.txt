@@ -1,0 +1,8 @@
+         int sum = 0;
+            for(int s=100;s<=200;s++)
+            {
+
+                    sum = sum + s;
+                
+            }
+            Console.WriteLine("The sum of numbers between 100 and 200:" + sum);

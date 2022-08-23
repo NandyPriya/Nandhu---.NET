@@ -1,0 +1,16 @@
+            int e;int s1=0;
+            Console.WriteLine("enter a n value");
+            e = Convert.ToInt32(Console.ReadLine());
+            for(int b=1;b<=e;b++)
+            {
+                
+                
+                if (b % 2 != 0)
+                {
+                    Console.WriteLine(b);
+                    s1 = s1 + b;
+                }
+                
+            }
+            Console.WriteLine("sum of odd natural numbers is" + s1);
+            Console.WriteLine

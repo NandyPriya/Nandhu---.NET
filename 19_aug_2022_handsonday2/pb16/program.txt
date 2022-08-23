@@ -1,0 +1,22 @@
+
+            int initial = 100,hit1=10,miss = -20;
+            int remain=0;
+            Console.WriteLine("enter whether hit or miss");
+            for (int i=1;i<=4;i++)
+            {
+                string h;
+               
+                h = Console.ReadLine();
+                if(h=="HIT")
+                {
+                    remain = initial + hit1;
+                }
+                else
+                {
+                    remain = initial - miss;
+                }
+                
+            }
+            Console.WriteLine("EXAMPLE OUTPUT:"+remain); */
+          
+            Console.ReadLine();

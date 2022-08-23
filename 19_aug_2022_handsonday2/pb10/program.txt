@@ -1,0 +1,9 @@
+       int u,rem,rev=0;
+            Console.WriteLine("enter a number");
+            u = Convert.ToInt32(Console.ReadLine());
+            while(u!=0)
+            { rem = u % 10;
+                rev = rev * 10 + rem;
+                u /= 10;
+            }
+            Console.WriteLine("reverse number is "+rev);

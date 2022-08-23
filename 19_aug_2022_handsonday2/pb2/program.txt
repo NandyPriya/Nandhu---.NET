@@ -1,0 +1,28 @@
+     int i, j, k;
+            Console.WriteLine("enter a first number");
+            i = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter a second number");
+            j = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter a third number");
+            k = Convert.ToInt32(Console.ReadLine());
+            if ((i != 0 && j != 0) && k != 0)
+            {
+                if ((i > j) && (i > k))
+                {
+                    Console.WriteLine("{0}is greater number", i);
+                }
+                else if ((j > i) && (j > k))
+                {
+                    Console.WriteLine("{0}is greater number", j);
+                }
+                else
+                {
+                    Console.WriteLine("{0}is greater number", k);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("pls enter number > 0");
+            }
+            Console.WriteLine

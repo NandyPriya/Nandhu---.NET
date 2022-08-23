@@ -1,0 +1,36 @@
+           int l;
+           Console.WriteLine("enter a number");
+           
+           
+            l = Convert.ToInt32(Console.ReadLine());
+            switch (l>100)
+            {
+                case true:
+                    
+                        Console.WriteLine("number is greater than 100");
+                    
+                    break;
+                case false:
+                    switch(l==0)
+                    {
+                        case true:
+                        Console.WriteLine("number is zero");
+                            break;
+                        case false:
+                            if (l % 2 != 0)
+                            {
+                                Console.WriteLine("number is odd");
+                            }
+                            else
+                            {
+                                Console.WriteLine("number is even");
+                            }
+                            break;
+                    }
+                    break;
+                
+                default:
+                    
+                    break;
+            }
+           

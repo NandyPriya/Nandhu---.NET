@@ -1,0 +1,27 @@
+            int m, d, y;
+            Console.WriteLine("enter a first subject");
+            m = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter a second subject");
+            d = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter a third subject");
+            y = Convert.ToInt32(Console.ReadLine());
+            int g = (m + d + y);
+            Console.WriteLine(g);
+            double per = (float)g / 300 * 100.0;
+            Console.WriteLine(per);
+            if(per>=60)
+            {
+                Console.WriteLine("first");
+            }
+            else if(per>=45 && per<=60)
+            {
+                Console.WriteLine("second");
+            }else if(per >= 35 && per <= 45)
+            {
+                Console.WriteLine("third");
+            }
+            else
+            {
+                Console.WriteLine("fail");
+            }
+            Console.WriteLine
