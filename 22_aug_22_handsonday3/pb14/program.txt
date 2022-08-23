@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp14new
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            {
+                int[] a = new int[] { 10, 5, 3, 4, 3, 5, 6 };
+                FirstRepeating(a);
+                Console.WriteLine(Array.IndexOf(a, 5));
+                Console.ReadLine();
+            }
+
+        }
+
+       static void FirstRepeating(int[] a)
+        {
+
+            int min = -1;
+
+
+            HashSet<int> set = new HashSet<int>();
+
+
+            for (int i = a.Length - 1; i >= 0; i--)
+            {
+
+                if (set.Contains(a[i]))
+                {
+                    min = i;
+                }
+
+                else
+                {
+                    set.Add(a[i]);
+                }
+            }
+
+
+            if (min != -1)
+            {
+                Console.WriteLine("The first repeating element is " + a[min] );
+                
+            }
+            else
+            {
+                Console.WriteLine("There are no repeating elements");
+            }
+        }
+
+
+    }
+}

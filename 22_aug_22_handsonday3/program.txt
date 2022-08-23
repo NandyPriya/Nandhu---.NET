@@ -177,9 +177,6 @@ namespace ConsoleApp5
 ==========================================================================================================================
 6)using System;
 using System.Collections;
-
-
-
 namespace ConsoleApp6
 {
     internal class Program
@@ -278,7 +275,6 @@ namespace ConsoleApp8
 ===========================================================================================================================
 9)using System;
 using System.Collections.Generic;
-
 
 namespace ConsoleApp9
 {
@@ -440,7 +436,6 @@ namespace ConsoleApp13
 =============================================================================================================================
 14)using System;
 using System.Collections.Generic;
-
 
 namespace ConsoleApp14new
 {

@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp10
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            dic.Add(1,"nandhini");
+            dic.Add(2,"ajay");
+            dic.Add(3, "karuna");
+            dic.Add(4, "jothiswaran");
+            foreach(var item in dic)
+            {
+                Console.WriteLine(item.Key + " " + item.Value);
+            }
+            Console.Read();
+        }
+    }
+}

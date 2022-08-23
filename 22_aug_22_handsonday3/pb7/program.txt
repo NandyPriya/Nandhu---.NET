@@ -1,0 +1,28 @@
+using System;
+using System.Collections;
+
+
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue q = new Queue();
+            q.Enqueue(45);
+            q.Enqueue(67);
+            q.Enqueue(78);
+            q.Enqueue(98);
+            q.Dequeue();
+            q.Dequeue();
+            foreach(var item in q)
+            {
+                Console.WriteLine(item);
+            }
+            object y = q.Peek();
+            Console.WriteLine("top most element in queue   "+y);
+            Console.Read();
+
+        }
+    }
+}

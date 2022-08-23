@@ -1,0 +1,36 @@
+using System;
+using System.Collections;
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Stack s = new Stack();
+            s.Push(1);
+            s.Push(34);
+            s.Push(34.34f);
+            s.Push(34.56789d);
+            s.Push("Hello");
+            Console.WriteLine("before pop");
+            foreach(var item in s)
+            {
+                Console.WriteLine(item);
+            }
+            s.Pop();
+            Console.WriteLine("after pop");
+            foreach (var item in s)
+            {
+                Console.WriteLine(item);
+            }
+            object p = s.Peek();
+            Console.WriteLine("top most element in the stack  "+p);
+            int h = s.Count;
+            Console.WriteLine("no.of.elements   "+h);
+            Console.Read();
+
+
+        }
+    }
+}

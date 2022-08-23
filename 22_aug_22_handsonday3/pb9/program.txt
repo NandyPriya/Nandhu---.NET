@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp9
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<float> f = new List<float>();
+            f.Add(58.89f);
+            f.Add(52.78f);
+            f.Add(78.21f);
+            f.Add(36.58f);
+            f.Add(10.07f);
+            foreach (var item in f)
+            {
+                Console.WriteLine(item);
+            }
+            f.Sort();
+            Console.WriteLine("Ascending Order");
+            foreach(var item in f)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Descending Order");
+            f.Reverse();
+            foreach (var item in f)
+            {
+                Console.WriteLine(item);
+            }
+            Console.Read();
+        }
+    }
+}

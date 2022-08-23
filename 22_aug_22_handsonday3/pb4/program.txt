@@ -1,0 +1,29 @@
+using System;
+using System.Collections;
+
+
+namespace ConsoleApp4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList ar = new ArrayList();
+            ar.Add(1);
+            ar.Add(2);
+            ar.Add("nandhini");
+            ar.Add("amarnaath");
+            ar.Add(true);
+            ar.Remove(2);
+            int u = ar.Count;
+            Console.WriteLine("number of elements in arraylist "+u);
+            Console.WriteLine("elements in arraylist");
+            foreach (var a in ar)
+            {
+                Console.WriteLine(a);
+            }
+           
+            Console.ReadLine();
+        }
+    }
+}
