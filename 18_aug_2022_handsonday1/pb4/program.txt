@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace handsonday3_4th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j, m, n,h;
+            Console.WriteLine("enter the first number");
+            i = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("enter the second number");
+            j = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the third number");
+            m = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the fourth number");
+            n = Convert.ToInt32(Console.ReadLine());
+             h = (i + j + m + n);
+            Console.WriteLine("Average is"+ h+"/4");
+            Console.ReadLine();
+
+
+        }
+    }
+}

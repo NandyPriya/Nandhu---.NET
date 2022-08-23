@@ -1,0 +1,24 @@
+ 9) using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_9th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int d;
+            Console.WriteLine("Enter a number");
+            d = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("{0}{0}{0}",d,d,d);
+            Console.WriteLine("{0} {0}", d, d);
+            Console.WriteLine("{0} {0}", d, d);
+            Console.WriteLine("{0} {0}", d, d);
+            Console.WriteLine("{0}{0}{0}", d, d, d);
+            Console.ReadLine();
+        }
+    }
+}

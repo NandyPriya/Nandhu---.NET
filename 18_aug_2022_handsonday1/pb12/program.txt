@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_12th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int m,km,m1,km1;
+            Console.WriteLine("Enter the meter");
+            m = Convert.ToInt32(Console.ReadLine());
+            km = m / 1000;
+            Console.WriteLine("Convert meter to kilometer is "+km);
+            Console.WriteLine("Enter the kiolmeter");
+            km1 = Convert.ToInt32(Console.ReadLine());
+            m1 = km1 * 1000;
+            Console.WriteLine("Convert kilometer to meter is " + m1);
+            Console.ReadLine();
+        }
+    }
+}

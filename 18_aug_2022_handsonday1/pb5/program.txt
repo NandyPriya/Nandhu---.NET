@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace handsonday3_5th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int x, y, z,l,m;
+            Console.WriteLine("enter the first number");
+            x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("enter the second number");
+            y = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the third number");
+            z = Convert.ToInt32(Console.ReadLine());
+            l = (x + y) * z;
+            m = (x * y)+(y*z);
+             
+            Console.WriteLine("Results of specified numbers {0},{1} and {2},(x+y).z is {3} and x.y+y.z is {4}",x,y,z,l,m);
+            Console.ReadLine();
+        }
+    }
+}

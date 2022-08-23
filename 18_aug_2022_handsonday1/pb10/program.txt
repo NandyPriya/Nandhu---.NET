@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_10th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int l, m;
+            Console.WriteLine("Input first integer");
+            l = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Input second integer");
+            m = Convert.ToInt32(Console.ReadLine());
+            if ((l < 0 && m> 0)||(l>0 && m<0))
+            {
+                Console.WriteLine("true");
+            }
+            else
+            {
+                Console.WriteLine("false");
+            }
+            Console.ReadLine();
+        }
+    }
+}

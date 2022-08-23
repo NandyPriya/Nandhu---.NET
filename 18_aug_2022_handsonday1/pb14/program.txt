@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_14th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float d, j;
+            Console.WriteLine("Enter the US Dollar");
+            d = Convert.ToInt32(Console.ReadLine());
+            j = d * 70;
+            Console.WriteLine("Convert US Dollar to Indian Rupees is " + j);
+            Console.ReadLine();
+        }
+    }
+}

@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace hansonday3_3rd
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            Console.WriteLine("Input the first number");
+            i = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Input the second number");
+            j = Convert.ToInt32(Console.ReadLine());
+            int h = i + j;
+            int l = i - j;
+            int m = i * j;
+            int n = i / j;
+
+            Console.WriteLine("{0}+{1} ={2} ", i, j, h);
+            Console.WriteLine("{0}-{1} = {2}", i, j,l);
+            Console.WriteLine("{0}*{1} = {2}", i, j, m);
+            Console.WriteLine("{0}/{1} = {2}", i, j, n);
+            Console.ReadLine();
+
+        }
+    }
+}

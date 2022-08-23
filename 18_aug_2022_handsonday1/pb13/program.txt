@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_13th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int d;
+            float g;
+            Console.WriteLine("Enter the amount of celsius");
+            d = Convert.ToInt32(Console.ReadLine());
+            g = ((d * 9) / 5) + 32;
+            Console.WriteLine("convert celsius to fahrenheit is "+ g);
+            Console.ReadLine();
+        }
+    }
+}

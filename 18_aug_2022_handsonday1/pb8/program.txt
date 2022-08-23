@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _3rdday_8th
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int d;
+            float f,l;
+            Console.WriteLine("Enter the amount of celsius");
+            d = Convert.ToInt32(Console.ReadLine());
+            f = ((d * 9) / 5) + 32;
+            l = d + 273;
+            Console.WriteLine("Fahrenheit = "+f);
+            Console.WriteLine("Kelvin = " + l);
+            Console.ReadLine();
+        }
+    }
+}
