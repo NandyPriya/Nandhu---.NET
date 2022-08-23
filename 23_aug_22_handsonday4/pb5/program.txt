@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            employee[] e1 = new employee[4];
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("enter the employee rollno");
+                int empno = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the employee salary");
+                 int sal = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the employee department no.");
+                int deptno = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the employee name");
+                string ename = Console.ReadLine();
+
+                e1[i].Accept(empno, sal, deptno, ename);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                e1[i].display();
+            }
+            Console.Read();
+
+
+            //e1.Accept(e1.empno, e1.sal, e1.deptno, e1.ename);
+            //e1.display();
+            Console.Read();
+        }
+    }
+}

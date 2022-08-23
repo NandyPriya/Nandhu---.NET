@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            Console.WriteLine("enter a 1st number");
+            i = Convert.ToInt32(Console.ReadLine ());
+            Console.WriteLine("enter a 2nd number");
+            j = Convert.ToInt32(Console.ReadLine());
+            addtwonum(i, j);
+            Console.Read();
+        }
+        static void addtwonum(int i,int j)
+        {
+            int k = i + j;
+            Console.WriteLine("addition of two numbers using return type is void: "+k); 
+        }
+    }
+}

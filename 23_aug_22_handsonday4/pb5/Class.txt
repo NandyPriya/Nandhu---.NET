@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    struct employee
+    {
+        public int empno;
+        public int sal;
+        public int deptno;
+        public string ename;
+        public void Accept(int empno, int sal, int deptno, string ename)
+        {
+            this.empno = empno;
+            this.sal = sal;
+            this.deptno = deptno;
+            this.ename = ename;
+        }
+        public void display()
+        {
+            Console.WriteLine("empno: " + empno);
+            Console.WriteLine("empno: " + sal);
+            Console.WriteLine("empno: " + deptno);
+            Console.WriteLine("empno: " + ename);
+
+
+        }
+    }
+}

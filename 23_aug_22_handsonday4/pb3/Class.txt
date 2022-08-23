@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    
+        struct Employee
+        {
+            int empno;
+            int sal;
+            int deptno;
+            string ename;
+            public int empno1
+            {
+                get
+                {
+                    return empno;
+                }
+                set
+                {
+                    empno = value;
+                }
+            }
+        public int sal1
+        {
+            get
+            {
+                return sal;
+            }
+            set
+            {
+                sal = value;
+            }
+        }
+        public int deptno1
+        {
+            get
+            {
+                return deptno;
+            }
+            set
+            {
+                deptno = value;
+            }
+        }
+        public string ename1
+        {
+            get
+            {
+                return ename;
+            }
+            set
+            {
+                ename = value;
+            }
+        }
+
+
+    }
+
+}
