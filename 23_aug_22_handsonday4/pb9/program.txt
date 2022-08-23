@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            employee e1 = new employee();
+            Console.WriteLine("enter the employee rollno");
+            e1.empno1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("employee rollno: "+e1.empno1);
+            Console.WriteLine("enter the employee salary");
+            e1.sal = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("employenee salary: " + e1.sal);
+            Console.WriteLine("enter the employee department no.");
+            e1.deptno1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("employenee departmnent no: " + e1.deptno1);
+            Console.WriteLine("enter the employee name");
+            e1.ename1 = Console.ReadLine();
+            Console.WriteLine("employenee name: " + e1.ename1);
+
+            e1.Accept(e1.empno1, e1.sal, e1.deptno1, e1.ename1);
+            e1.display();
+            Console.Read();
+        }
+    }
+}

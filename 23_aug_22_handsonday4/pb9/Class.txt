@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace ConsoleApp7
+{
+   struct employee
+    {
+        public int empno;
+        public int sal;
+        public int deptno;
+        public string ename;
+        public void Accept(int empno, int sal, int deptno, string ename)
+        {
+            this.empno = empno;
+            this.sal = sal;
+            this.deptno = deptno;
+            this.ename = ename;
+        }
+        public void display()
+        {
+            Console.WriteLine("empno: " + empno);
+            Console.WriteLine("empno: " + sal);
+            Console.WriteLine("empno: " + deptno);
+            Console.WriteLine("empno: " + ename);
+
+
+        }
+        public string ename1
+        {
+            get
+            {
+                return ename;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("name cannot be null or empty");
+                }
+                else
+                {
+                    ename = value;
+                }
+               
+            }
+        }
+        public int deptno1
+        {
+            get
+            {
+                return deptno;
+            }
+            set
+            {
+                if(deptno ==0)
+                {
+                    Console.WriteLine("pls enter  valid department number");
+                }
+                else
+                {
+                    deptno = value;
+                }
+                
+            }
+        }
+        public int empno1
+        {
+            get
+            {
+                return empno;
+            }
+            set
+            {
+                if(empno ==0)
+                {
+                    Console.WriteLine("pls enter valid employee number");
+                }
+                else
+                {
+                    empno = value;
+                }
+                
+                
+            }
+        }
+    }
+  
+}
+

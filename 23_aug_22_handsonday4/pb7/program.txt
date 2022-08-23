@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+
+            Console.WriteLine("enter 1st number");
+            i = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("enter 1st number");
+            j = Convert.ToInt32(Console.ReadLine());
+
+            try
+            {
+                int k = i / j;
+                Console.WriteLine(k);
+            }
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine("this is dividebyzeroexception");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("finally is fired!!!!!!!!!!!!!!!");
+            }
+        
+            Console.Read();
+        }
+    }
+}

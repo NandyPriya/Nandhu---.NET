@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("display deptno");
+
+           
+                
+                int d = (int)deptnames.Purchase;
+                int d1 = (int)deptnames.Sales;
+                int d2 = (int)deptnames.Training;
+                int d3 = (int)deptnames.Accounts;
+                Console.WriteLine("deptno of purchase:{0}",d);
+                Console.WriteLine("deptno of Sales:{0}" , d1);
+                Console.WriteLine("deptno of Training:{0}" , d2);
+            Console.WriteLine("deptno of Accounts:{0}",d3);
+
+
+
+
+           
+            Console.WriteLine("display deptname");
+            int i = 0;
+            while(i<4)
+            {
+                Console.WriteLine("enter deptno");
+                int n1 = Convert.ToInt32(Console.ReadLine());
+                var nameofDay = (deptnames)n1;
+                Console.WriteLine(nameofDay);
+                i++;
+            }
+            
+
+
+            Console.Read();
+
+
+
+        }
+    }
+}
+
