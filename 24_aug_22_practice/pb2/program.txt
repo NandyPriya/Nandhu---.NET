@@ -1,0 +1,31 @@
+using System;
+using System.Text;
+
+
+namespace Stringbuilder
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter your dateofbirth");
+            DateTime dt = new DateTime();
+            
+            dt = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("DayofYear: " + dt.DayOfYear);
+            bool i = DateTime.IsLeapYear(dt.Year);
+            Console.WriteLine("leap year or not:" + i);
+            Console.WriteLine("DayofWeek: " + dt.DayOfWeek);
+            int currentyear = DateTime.Now.Year;
+            int byear = dt.Year;
+            int age = currentyear - byear;
+            Console.WriteLine("age:" + age);
+            int currentyear1 = DateTime.Now.Month;
+            int byear1 = dt.Month;
+            int age1 = currentyear1 - byear1;
+            Console.WriteLine("age in month:" + age1);
+            
+            Console.Read();
+        }
+    }
+}
