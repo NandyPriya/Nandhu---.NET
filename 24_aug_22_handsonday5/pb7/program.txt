@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace string_compare
+{
+    public class dayproperties
+
+    {
+        static void Main(string[] args)
+        {
+            DateTime dt = new DateTime();
+            Console.WriteLine("Today Date: "+DateTime.Today);
+            dt = DateTime.Now;
+            Console.WriteLine("Year : "+dt.Year);
+            Console.WriteLine("Month : "+dt.Month);
+            Console.WriteLine("Day : "+dt.Day);
+            Console.WriteLine("Hour : "+dt.Hour);
+            Console.WriteLine("Second : "+dt.Second);
+            Console.WriteLine("Minute : "+dt.Minute);
+            Console.WriteLine("Millisecond : "+dt.Millisecond);
+            Console.Read();
+        }
+    }
+}

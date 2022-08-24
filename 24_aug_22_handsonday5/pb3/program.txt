@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace string_compare
+{
+    public class stringindexof
+    {
+
+        static void Main(string[] args)
+        {
+            string a; char r;
+            Console.WriteLine("enter a string");
+            a = Console.ReadLine();
+            Console.WriteLine("enter a character to find the index");
+            r = Convert.ToChar(Console.ReadLine());
+
+            int y = a.IndexOf(r);
+            Console.WriteLine("index of a {0} character in a {1} is {2}", r, a,y);
+            Console.Read();
+        }
+    }
+}

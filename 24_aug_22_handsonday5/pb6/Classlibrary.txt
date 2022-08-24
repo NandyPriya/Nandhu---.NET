@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ClassLibrary2
+{
+    public class Sample
+    {
+     public static void Makefile()
+        {
+            string path = " D:\\vscode C# Code\\day 7\\handson\\firstFile.txt";
+            File.Create(path);
+        }
+    }
+}

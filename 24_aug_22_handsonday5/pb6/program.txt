@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary2;
+
+namespace Createfile
+{
+    public class Program
+    {
+       public  static void Main(string[] args)
+        {
+            Console.WriteLine("Creating an firstFile.txt empty file");
+            Sample.Makefile();
+                Console.Read();
+        }
+    }
+}

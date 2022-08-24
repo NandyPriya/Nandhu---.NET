@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace string_compare
+{
+    public class stringsplit
+    {
+        static void Main(string[] args)
+        {
+            string h = "Welcome to the world of c# programming";
+            string[] j = h.Split('#');
+           
+            foreach(string i in j)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.Read();
+        }
+    }
+}

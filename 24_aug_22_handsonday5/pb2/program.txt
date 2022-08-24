@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace string_compare
+{
+    public class Stringcopy
+    {
+        static void Main(string[] args)
+        {
+            string a, b;
+            Console.WriteLine("enter a string");
+            a = Console.ReadLine();
+            b = string.Copy(a);
+
+            Console.WriteLine("string is {0} and copy of that string is also {1}", a,b);
+            Console.Read();
+        }
+    }
+}
