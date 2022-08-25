@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pb4
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("E drive info");
+            DriveInfo g = new DriveInfo("E");
+            Console.WriteLine(g.Name);
+            Console.WriteLine(g.TotalSize);
+            Console.WriteLine(g.DriveType);
+            Console.WriteLine(g.DriveFormat);
+            Console.WriteLine("List the all availabel disk drivers");
+            DriveInfo[] h = DriveInfo.GetDrives();
+            foreach (var item in h)
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.ReadLine();
+        }
+    }
+}
