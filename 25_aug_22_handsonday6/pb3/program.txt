@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Reflection.Emit;
+
+namespace operationdirectory
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            string i, path,j,g;
+            path = @"D:\vscode C# Code\";
+            Console.WriteLine("enter a directory name");
+            i = Console.ReadLine();
+            i = String.Concat(path, i);
+             var k =Directory.CreateDirectory(i);
+            var y = k.FullName;
+            
+            Console.WriteLine("successfullly created  directory!!!!!!!!!!!!!!!1");
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            int r=0;
+            while (r<3)
+            {
+                Console.WriteLine("enter a sub-directory name");
+                j = Console.ReadLine();
+
+                var t = Directory.CreateDirectory(Path.Combine(y, j));
+                var s = t.FullName;
+                Console.WriteLine("successfullly created sub-directory!!!!!!!!!!!!!!!1");
+                int v = 0;
+                while (v<2)
+                {
+                    Console.WriteLine("enter a file name in a sub-directory");
+                    string o = Console.ReadLine();
+
+                    File.Create(Path.Combine(s, o));
+                    Console.WriteLine("file is created successfully!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+                    
+                    v++;
+                }
+                Console.WriteLine("------------------------------------------------------------------------------------");
+                int z = 0;
+                while (z<12)
+                {
+                    Console.WriteLine("enter a folder in a sub-directory");
+                    string p = Console.ReadLine();
+                    Directory.CreateDirectory(Path.Combine(s, p));
+                    Console.WriteLine("folder is created successfully!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+                    z++;
+                }
+                Console.WriteLine("totally 12 folders created in each sub-directory!!!!!!!!!!!!!!!!!!!!!");
+                r++;
+            }
+            Console.WriteLine("------------------------------------------------------------------------------------");
+
+            string[] dirs = Directory.GetDirectories(y+"\\");
+            foreach (var item in dirs)
+            {
+                Console.WriteLine(item);
+                string[] fnames = Directory.GetFiles(item);
+                foreach (var item1 in fnames)
+                {
+                    Console.WriteLine("Files");
+                    Console.WriteLine(item1);
+                }
+                string[] fnames1 = Directory.GetDirectories(item);
+                foreach (var item1 in fnames1)
+                {
+                    Console.WriteLine("Files");
+                    Console.WriteLine(item1);
+                }
+                Console.WriteLine("-----------------------------------------------------------------------------------");
+            }
+
+            
+            Console.ReadLine();
+
+        }
+    }
+}
