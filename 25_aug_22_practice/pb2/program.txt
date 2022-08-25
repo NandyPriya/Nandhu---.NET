@@ -1,0 +1,171 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Xml;
+
+namespace Filestream1
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            //StreamWriter1();
+           
+            //StreamReader1();
+            //Binarywriter();
+            //Binaryreader();
+            //xmlwriter();
+            xmlreader(); Console.Read();
+        }
+
+        private static void xmlreader()
+        {
+            FileStream fs = new FileStream("emp.xml", FileMode.Open, FileAccess.Read
+                            );
+            XmlTextReader xr = new XmlTextReader(fs);
+            while (xr.Read())
+            {
+                switch (xr.NodeType)
+                {
+                    case XmlNodeType.None:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Element:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Attribute:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Text:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.CDATA:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.EntityReference:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Entity:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.ProcessingInstruction:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Comment:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Document:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.DocumentType:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.DocumentFragment:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Notation:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.Whitespace:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.SignificantWhitespace:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.EndElement:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.EndEntity:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    case XmlNodeType.XmlDeclaration:
+                        Console.WriteLine(xr.Value);
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            xr.Close();
+            xr.Dispose();
+            fs.Close();
+            fs.Dispose();
+
+        }
+
+        private static void xmlwriter()
+        {
+            XmlWriter xw = XmlWriter.Create("emp.xml");
+            xw.WriteStartDocument();
+            xw.WriteStartElement("empdata");
+            xw.WriteAttributeString("city", "Pune");
+            xw.WriteElementString("empno", "1");
+            xw.WriteElementString("empname", "ABC");
+            xw.WriteElementString("deptno", "10");
+            xw.WriteComment("This is a comment");
+
+
+            xw.WriteEndElement();
+            xw.WriteEndDocument();
+            xw.Close();
+            xw.Dispose();
+        }
+
+        private static void Binaryreader()
+        {
+            FileStream fs = new FileStream("demo1.bin", FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            int i = br.ReadInt32();
+            Console.WriteLine(i);
+            br.Close();
+            br.Dispose();
+            fs.Close();
+            fs.Dispose();
+        }
+
+        private static void Binarywriter()
+        {
+            FileStream fs = new FileStream("demo1.bin", FileMode.Create, FileAccess.Write);
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(224234);
+            bw.Flush();
+
+
+            fs.Flush();
+            bw.Close();
+            fs.Close();
+            bw.Dispose();
+            fs.Dispose();
+        }
+
+        private static void StreamReader1()
+        {
+            FileStream fs = new FileStream("demo1.txt", FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            string contents = sr.ReadToEnd();
+            Console.WriteLine(contents);
+
+            sr.Close();
+            sr.Dispose();
+            fs.Close();
+            fs.Dispose();
+        }
+
+        private static void StreamWriter1()
+        {
+            FileStream f1 = new FileStream("demo1.txt", FileMode.Open, FileAccess.Write);
+            StreamWriter s1 = new StreamWriter(f1);
+            s1.Write("this is the first file in that i am writing into it.");
+            s1.Flush();
+            f1.Flush();
+            s1.Close();
+            f1.Close();
+            s1.Dispose();
+            f1.Dispose();
+            Console.WriteLine("file created successfully");
+        }
+    }
+}

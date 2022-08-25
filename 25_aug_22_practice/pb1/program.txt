@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace FileApi
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string fname,path,con;
+            path = @"D:\vscode C# Code\";
+            Console.WriteLine("enter a file name");
+            fname = Console.ReadLine();
+            fname = string.Concat(path + fname);
+            //Console.WriteLine("enter a  conten in a file");
+            //con = Console.ReadLine();
+            //File.WriteAllText(fname, con);
+            //Console.WriteLine("file created successfully!!!!!!!!!!!!!!!");
+            //File.AppendAllText(fname,con);
+            //Console.WriteLine("file appended successfully!!!!!!!!!!!!!!!");
+            //File.Copy(fname, "copied.txt");
+            //Console.WriteLine("file copied successfully!!!!!!!!!!!!!!!");
+            //File.Move(fname, "movedfile.txt");
+            //Console.WriteLine("file moved successfully!!!!!!!!!!!!!!!");
+            bool a = File.Exists(fname);
+            Console.WriteLine(a);
+         string v =   File.ReadAllText("movedfile.txt");
+            Console.WriteLine(v);
+            Console.ReadLine();
+        }
+    }
+}
