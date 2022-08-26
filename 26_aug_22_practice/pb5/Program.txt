@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary1;
+
+namespace Arrayofobject
+{
+    public class linkedlistofemployees
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<Employee> emp = new LinkedList<Employee>();
+            emp.AddFirst(new Employee { EmpID = 1, EmpName = "Jack", DeptNo = 1, City = "Hyderabad" });
+            emp.AddAfter(emp.First, new Employee { EmpID = 1, EmpName = "Jill", DeptNo = 2, City = "Pune" });
+            emp.AddLast(new Employee { EmpID = 1, EmpName = "Jim", DeptNo = 3, City = "Chennai" });
+            emp.AddBefore(emp.Last,new Employee { EmpID = 1, EmpName = "Hari", DeptNo = 4, City = "Chennai" });
+            emp.AddAfter(emp.First.Next, new Employee { EmpID = 1, EmpName = "Pari", DeptNo = 5, City = "Chennai" });
+            emp.RemoveLast();
+            emp.AddLast(new Employee { EmpID = 1, EmpName = "Veena", DeptNo = 3, City = "Chennai" });
+            foreach (var item in emp)
+            {
+                Console.WriteLine(item.EmpID);
+                Console.WriteLine(item.EmpName);
+                Console.WriteLine(item.DeptNo);
+                Console.WriteLine(item.City);
+            }
+            Console.Read();
+        }
+    }
+}

@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary1;
+
+namespace Arrayofobject
+{
+    public class listemployee
+    {
+        static void Main(string[] args)
+        {
+            List<Employee> emplist = new List<Employee>();
+            emplist.Add(new Employee { EmpID = 1, EmpName = "Akhil", City = "pune", DeptNo = 10 });
+            Employee emp1 = new Employee();
+            try
+            {
+
+            emp1.EmpID = 2;
+            emp1.EmpName = "nandhini";
+                Console.WriteLine("enter deptno");
+                emp1.DeptNo = Convert.ToInt32(Console.ReadLine());
+            //emp1.DeptNo = 90;
+            emp1.City = "Mumbai";
+            emp1.CalculateSalary(10000);
+            Console.WriteLine(emp1.GrossSalary);
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);  ;
+            }
+
+            emplist.Add(emp1);
+            foreach (var item in emplist)
+            {
+                Console.WriteLine(item.EmpID);
+                Console.WriteLine(item.EmpName);
+                Console.WriteLine(item.DeptNo);
+                Console.WriteLine(item.City);
+                Console.WriteLine(item.GrossSalary);
+            }
+
+            Console.Read();
+        }
+    }
+}

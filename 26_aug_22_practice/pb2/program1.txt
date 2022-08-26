@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Linkedlistdemo
+{
+    public class Linkedliststring
+    {
+        static void Main(string[] args)
+        {
+
+            LinkedList<string> mylist = new LinkedList<string>();
+            mylist.AddFirst("jothiswaran");
+            mylist.AddLast("karuna");
+            mylist.AddAfter(mylist.First, "nandhini");
+            mylist.AddBefore(mylist.Last, "karthika");
+            mylist.AddBefore(mylist.Last.Previous, "yogalakshmi");
+            mylist.AddAfter(mylist.First.Next, "narmatha");
+            mylist.AddAfter(mylist.First.Next.Next, "saratha");
+            LinkedListNode<string> foundnode = mylist.Find("nandhini");
+            foundnode.Value = "nandhinipriya";
+            foreach (var item in mylist)
+            {
+                Console.WriteLine(item);
+
+            }
+            Console.ReadKey();
+        }
+    }
+}
