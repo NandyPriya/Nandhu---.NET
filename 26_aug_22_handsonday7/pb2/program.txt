@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrarynew;
+
+namespace Arrayofstudentusingclass
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Student[] s1 = new Student[4];
+            for (int i = 0; i < s1.Length; i++)
+            {
+                s1[i] = new Student();
+                Console.WriteLine("enter a student id");
+                s1[i].StudID = Convert.ToInt32(Console.ReadLine());
+                //Console.WriteLine("student id: " + s1[i].StudID);
+                Console.WriteLine("enter a student name");
+                s1[i].StudName = Console.ReadLine();
+                //Console.WriteLine("student id: " + s1[i].StudName);
+                Console.WriteLine("enter a student rollno");
+                s1[i].StudNo = Convert.ToInt32(Console.ReadLine());
+                //Console.WriteLine("student id: " + s1[i].StudName);
+                Console.WriteLine("enter a student city");
+                s1[i].City = Console.ReadLine();
+                //Console.WriteLine("student id: " + s1[i].City);
+            }
+            foreach (var item in s1)
+            {
+                Console.WriteLine("Following are the details");
+                Console.WriteLine(item.StudID);
+                Console.WriteLine(item.StudName);
+                Console.WriteLine(item.StudNo);
+                Console.WriteLine(item.City);
+            }
+            Console.Read();
+        }
+    }
+}

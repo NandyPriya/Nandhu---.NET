@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Arrayofstudentsusingstruct
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            students[] s1 = new students[3];
+            for (int i = 0; i < s1.Length; i++)
+            {
+                s1[i] = new students();
+                Console.WriteLine("enter a student id");
+                s1[i].StudID = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("student id: " + s1[i].StudID);
+                Console.WriteLine("enter a student name");
+                s1[i].StudName = Console.ReadLine();
+                Console.WriteLine("student id: " + s1[i].StudName);
+                Console.WriteLine("enter a student rollno");
+                s1[i].StudNo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("student id: " + s1[i].StudName);
+                Console.WriteLine("enter a student city");
+                s1[i].City = Console.ReadLine();
+                Console.WriteLine("student id: " + s1[i].City);
+            }
+           
+                Console.Read();
+        }
+    }
+}

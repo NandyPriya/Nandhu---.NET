@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrarynew;
+
+
+namespace Arrayofstudentusingclass
+{
+    public class Linkedlistofproducts
+    {
+        static void Main(string[] args)
+        {
+            LinkedList<Products> list = new LinkedList<Products>();
+            list.AddFirst(new Products { ProdID=1,ProdName="Dairy milk",Prodprice=1000});
+            list.AddLast(new Products { ProdID = 6, ProdName = "Amul", Prodprice = 500 });
+            list.AddBefore(list.Last,new Products { ProdID = 5, ProdName = "Arun", Prodprice = 100 });
+            list.AddAfter(list.First,new Products { ProdID = 2, ProdName = "5star", Prodprice = 200 });
+            list.AddBefore(list.Last.Previous, new Products { ProdID = 4, ProdName = "copper", Prodprice = 300 });
+            list.AddAfter(list.First.Next, new Products { ProdID = 3, ProdName = "silver", Prodprice = 700 });
+            list.AddAfter(list.Find(list.ElementAt(5)),new Products { ProdID=7,ProdName="gold",Prodprice=90});
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.ProdID);
+                Console.WriteLine(item.ProdName);
+                Console.WriteLine(item.Prodprice);
+            }
+            Console.Read();
+        }
+        
+    }
+}

@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrarynew
+{
+    public class Student
+    {
+        private int _studid;
+
+        public int StudID
+        {
+            get { return _studid; }
+            set { _studid = value; }
+        }
+
+
+        private string _sname;
+
+        public string StudName
+        {
+            get { return _sname; }
+            set { _sname = value; }
+        }
+
+        //fully implemented property----do any validations
+        private int _srollno;
+
+        public int StudNo
+        {
+            get { return _srollno; }
+            set
+            {
+                try
+                {
+
+                    if (value != 0)
+                    {
+                        _srollno = value;
+                    }
+                    else
+                    {
+                        //Console.WriteLine("Deptno cannot be 0 or null");
+                        throw new ArgumentNullException("Deptno cannot be zero or null");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+
+        private string _scity;
+        public string City
+        {
+            get
+            {
+                return _scity;
+            }
+
+            set
+            {
+                _scity = value;
+            }
+        }
+
+
+    }
+}

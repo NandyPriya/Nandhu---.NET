@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrarynew
+{
+    public class Products
+    {
+        private int _prodid;
+
+        public int ProdID
+        {
+            get { return _prodid; }
+            set { _prodid = value; }
+        }
+
+
+        private string _pname;
+
+        public string ProdName
+        {
+            get { return _pname; }
+            set { _pname = value; }
+        }
+
+        //fully implemented property----do any validations
+        private int _prodprice;
+
+        public int Prodprice
+        {
+            get { return _prodprice; }
+            set
+            {
+                try
+                {
+
+                    if (value != 0)
+                    {
+                        _prodprice = value;
+                    }
+                    else
+                    {
+                        //Console.WriteLine("Deptno cannot be 0 or null");
+                        throw new ArgumentNullException("Deptno cannot be zero or null");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+
+       
+
+    }
+}

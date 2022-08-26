@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrarynew;
+
+namespace Arrayofstudentusingclass
+{
+    public  class listofproducts
+    {
+        static void Main(string[] args)
+        {
+
+
+            List<Products> p11 = new List<Products>();
+
+             addproduct(p11); 
+                     removemethod(p11);
+             
+           
+            
+           
+            Console.Read();
+
+        }
+
+        private static void removemethod(List<Products> p11)
+        {
+            Console.WriteLine("enter a product id u want to remove");
+            int k = Convert.ToInt32(Console.ReadLine());
+            Products r = p11.Find(s => s.ProdID == k);
+            //Products r = new Products();
+            p11.Remove(r);
+            Display(p11);
+
+        }
+
+        private static void Display(List<Products> p11)
+        {
+            foreach (var item in p11)
+            {
+
+
+                Console.WriteLine("product id: " + item.ProdID);
+                Console.WriteLine("product price :" + item.Prodprice);
+                Console.WriteLine("product name: " + item.ProdName);
+
+            }
+        }
+
+
+        private static void addproduct(List<Products> p11)
+        {
+            Console.WriteLine("enter a number of products u want to add");
+            int y = Convert.ToInt32(Console.ReadLine());
+           // List<Products> p11 = new List<Products>();
+            for (int i = 0; i < y; i++)
+            {
+
+                Products r = new Products(); int g;
+                Console.WriteLine("enter a productid");
+                g = Convert.ToInt32(Console.ReadLine());
+                r.ProdID = g;
+                Console.WriteLine("enter a productname");
+                string f = Console.ReadLine();
+                r.ProdName = f;
+                Console.WriteLine("enter a productprice");
+                int l = Convert.ToInt32(Console.ReadLine());
+                r.Prodprice = l;
+                p11.Add(r);
+
+            }
+            Console.WriteLine("product details are displayed");
+            Display(p11);
+            
+        }
+    }
+}
