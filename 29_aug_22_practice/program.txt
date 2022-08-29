@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Genericstack
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           genericstack1<string> stringdata = new genericstack1<string>();
+            stringdata.AddOrEdit(0, "Hello");
+            string printdata = stringdata.ReturnData(0);
+            Console.WriteLine(printdata);
+            Console.WriteLine("-------------------");
+            stringdata.AddOrEdit(0, "Welcome");
+
+            stringdata.ShowData(0);
+
+
+            Console.ReadLine();
+        }
+    }
+}
