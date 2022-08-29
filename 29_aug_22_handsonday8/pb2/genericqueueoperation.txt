@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace genericqueue1
+{
+    internal class genericqueueoperation
+    {
+        internal static readonly int max = 1000;
+        internal int[] queue = new int[max];
+        int rear,front;
+
+        internal bool isQueueEmpty()
+        {
+           
+            return (rear ==-1&& front==-1);
+        }
+
+        public genericqueueoperation()
+        {
+            rear = -1;
+            front = -1;
+        }
+
+        internal void Enqueue(int data)
+        {
+            if (rear == max-1)
+            {
+                Console.WriteLine("overflow occur");
+                return;
+            }
+            else if(front==-1&&rear==-1)
+            {
+                front = 0;
+                rear = 0;
+                queue[rear] = data;
+
+            }
+            else
+            {
+                rear++;
+                queue[rear] = data;
+            }
+        }
+
+        internal void Dequeue()
+        {
+            //T temp = default(T);
+           int value;
+            if (front == -1&&rear==-1)
+            {
+                Console.WriteLine("No elements on the stack");
+                return;
+            }
+            else
+            {
+                value = queue[front];
+                front++;
+                Console.WriteLine("dequeue element is: " + value); ;
+            }
+        }
+        internal void Peek()
+        {
+           // T temp = default(T);
+            if (front ==-1&&rear==-1)
+            {
+                Console.WriteLine("No elements on the stack");
+                return;
+            }
+            else
+            {
+                int value = queue[front];
+                Console.WriteLine("peek element is: " + value); 
+            }
+        }
+
+        internal void PrintqueueElements()
+        {
+            
+            if (front ==-1 && rear==-1)
+            {
+                Console.WriteLine("No elements on the stack");
+
+            }
+            else
+            {
+                for (int i = front; i <= rear; i++)
+                {
+                    Console.WriteLine(queue[i]);
+                }
+            }
+        }
+    }
+}
+

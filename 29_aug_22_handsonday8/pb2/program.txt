@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace genericqueue1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            genericqueueoperation stringdata = new genericqueueoperation();
+            //int y = Convert.ToInt32(Console.ReadLine());
+            stringdata.Enqueue(90);
+            stringdata.Enqueue(100);
+            stringdata.Enqueue(200);
+            stringdata.Enqueue(300);
+            Console.WriteLine("----------------------------------------------------");
+            stringdata.PrintqueueElements();
+            Console.WriteLine("--------------------------------------------------------");
+           stringdata.Dequeue();
+            stringdata.Dequeue();
+            stringdata.PrintqueueElements();
+            Console.WriteLine("--------------------------------------------------------------");
+            stringdata.Peek();
+            Console.Read();
+        }
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace genericstack1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            genricstackoperations<int> stringdata = new genricstackoperations<int>();
+            //int y = Convert.ToInt32(Console.ReadLine());
+            stringdata.Push(90);
+            stringdata.Push(100);
+            stringdata.Push(200);
+            stringdata.Push(300);
+            Console.WriteLine("----------------------------------------------------");
+            stringdata.PrintStackElements();
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("pop element is "+stringdata.Pop() ); 
+            stringdata.PrintStackElements();
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.WriteLine("peek element is "+stringdata.Peek()); 
+            Console.Read();
+        }
+    }
+}
