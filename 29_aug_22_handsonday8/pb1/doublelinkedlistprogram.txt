@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static doublylinkedlist1.Doublylinkedlist11;
+
+namespace doublylinkedlist1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            DoubleLinkedList<int> j = new DoubleLinkedList<int>();
+            j.InsertFront(j, 10);
+            j.InsertLast(j, 20);
+            j.InsertLast(j, 30);
+            j.InsertLast(j, 40);
+            j.InsertLast(j, 50);
+            j.display(j);
+            //j.InsertAfter(n, 10);
+            j.DeleteNodebyKey(j, 50);
+            Console.WriteLine("after deleting some element:");
+            j.display(j);
+            Console.Read();
+        }
+    }
+}

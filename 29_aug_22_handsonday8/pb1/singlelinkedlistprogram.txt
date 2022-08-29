@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static singlylinkedlist1.Singlylinkedlist11;
+
+namespace singlylinkedlist1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            UserSingleLinkedList<int> j = new UserSingleLinkedList<int>();
+            j.InsertNodeInFront(j,10);
+            j.InsertAtTheEnd(j, 20);
+            j.InsertAtTheEnd(j, 30);
+            j.InsertAtTheEnd(j, 40);
+            j.InsertAtTheEnd(j, 50);
+            j.display(j);
+            //j.InsertAfter(j.head.next,10);
+            j.DeleteByFindingData(j, 30);
+            Console.WriteLine("after deleting some element:");
+            j.display(j);
+            Console.Read();
+        }
+    }
+}
