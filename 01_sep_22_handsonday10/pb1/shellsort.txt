@@ -1,0 +1,59 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace shellsort1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter size of array");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int[] arr = new int[n];
+            Console.WriteLine("enter elements of an array");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("before sorting:");
+            for (int k = 0; k < arr.Length; k++)
+            {
+                Console.WriteLine(arr[k]);
+            }
+            shellsort11(arr);
+            Console.WriteLine("after sorting using shell sort:");
+            for(int k = 0; k < arr.Length; k++)
+            {
+                Console.WriteLine(arr[k]);
+            }
+            Console.Read();
+        }
+        public static  void shellsort11(int[] arr)
+        {
+            int temp,gap,j,i;
+            for( gap = (arr.Length/2); gap>=1;gap = gap/2)
+            {
+                for( j=gap;j<arr.Length;j++)
+                {
+                    for ( i = j-gap; i >=0; i=i-gap)
+                    {
+                        if (arr[i + gap] > arr[i])
+                        {
+                            break;
+                        }
+                        else
+                        {
+                           temp = arr[i+gap] ;
+                            arr[i + gap] = arr[i];
+                            arr[i] = temp;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
