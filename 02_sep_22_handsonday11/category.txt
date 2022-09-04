@@ -1,0 +1,156 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ClassLibrary11
+{
+    public class Categoey
+    {
+        public static  int productcount=0;
+        public int _catid;
+
+		public int catid
+		{
+			get { return _catid; }
+			set { _catid = value; }
+		}
+		public string _catname;
+
+		public string catname
+		{
+			get { return _catname; }
+			set { _catname = value; }
+
+		}
+		public string _catdesc;
+
+		public string catdesc
+		{
+			get { return _catdesc; }
+			set { _catdesc = value; }
+		}
+		 List<Products> _prod = new List<Products>();
+		public void AddProd(Products p)
+		{
+			_prod.Add(p);
+			productcount++;
+		}
+		public void display1()
+		{
+			foreach (var item in _prod)
+			{
+               
+                Console.WriteLine("product id:"+item._productid);
+                Console.WriteLine("productname: "+item._prodname);
+				
+            }
+			
+		}
+		public List<Products> prod
+		{
+			get { return _prod; }
+			set { _prod = value; }
+		}
+		public void AddCategory(int _catid,string _catdesc,string _catname)
+		{
+			this._catid = _catid;
+			this._catdesc = _catdesc;
+			this._catname = _catname;
+		}
+
+		
+        public void DisplayDetails(int _catid1,string _catname1,string _catdesc1,int _catid2,string _catname2,string _catdesc2)
+        {
+			Console.WriteLine("category id: " + _catid1);
+			Console.WriteLine("category description: " + _catdesc1);
+			Console.WriteLine("category name: " + _catname1);
+
+            Console.WriteLine("category id: " + _catid2);
+            Console.WriteLine("category description: " + _catdesc2);
+            Console.WriteLine("category name: " + _catname2);
+           
+
+		}
+
+
+    }
+    public class Products
+	{
+		public int _productid;
+
+		public int productid
+		{
+			get { return _productid; }
+			set { _productid = value; }
+		}
+		public string _prodname;
+
+		//Console.WriteLine(_productid);
+        public string prodname
+		{
+			get { return _prodname; }
+			set { _prodname = value; }
+		}
+		private int _qtysold;
+
+		public  int qtysold 
+		{
+			get { return _qtysold; }
+			set { _qtysold = value; }
+		}
+		private float _unitprice;
+
+		public float unitprice
+		{
+			get { return _unitprice; }
+			set { _unitprice = value; }
+		}
+		private string _unitofmeasurement;
+
+		public string unitofmeasurement
+		{
+			get { return _unitofmeasurement; }
+			set { _unitofmeasurement = value; }
+		}
+		private int _qtyinhand;
+
+		public int qtyinhand
+		{
+			get { return _qtyinhand; }
+			set { _qtyinhand = value; }
+		}
+
+		private int _reorderlevel;
+
+		public int reorderlevel
+		{
+			get { return _reorderlevel; }
+			set { _reorderlevel = value; }
+		}
+
+        //static int count = 0;
+        public void AddProduct(int _productid,string _prodname)
+		{
+			
+		this._productid = _productid;
+			
+		this._prodname = _prodname;
+			
+    }
+		public void Display(int _productid, string _prodname)
+		{
+            this._productid = _productid;
+
+            this._prodname = _prodname;
+			Console.WriteLine(_productid);
+			Console.WriteLine(_prodname);
+        }
+		
+
+	}
+}
+
+
