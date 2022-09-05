@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BookClass
+{
+    public   class Novel:Book
+    {
+        //public abstract void InsertBook(int bookid, string bookname, int price);
+        interface nove1
+        {
+             void InsertBook(int bookid, string bookname, int price, int numberofpages);
+        }
+        private int numberofpages;
+
+        public int Numberofpages
+        {
+            get { return numberofpages; }
+            set { numberofpages = value; }
+        }
+       
+        public  void InsertBook(int bookid,string bookname, int price,int numberofpages)
+        {
+            Bookid = bookid;
+
+            Bookname = bookname;
+
+            Price = price;
+
+            Numberofpages = numberofpages;
+
+            Console.WriteLine("Bookid:" + Bookid+"\n"  + "Bookname: " + Bookname + "\n" + "Price: " + Price + "\n" + "Numberofpages:" + numberofpages);
+        }
+        public new void InsertBook(int bookid, string bookname, int price)
+        {
+
+            Bookid = bookid;
+
+            Bookname = bookname;
+
+            Price = price;
+
+
+
+            Console.WriteLine("Bookid:" + Bookid + "Bookname: " + Bookname + "Price: " + Price);
+
+        }
+    }
+}

@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BookClass;
+
+namespace Inheritancedemo1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Cart c = new Cart();
+            c.AddToCart();
+            c.AddToCart();
+            Console.WriteLine("---------------------------------------------------------------------------------------------------");  
+            Console.WriteLine("total book count added: "+Cart.bookcount);
+            List<Book> li = new List<Book>();
+            li = c.booklist();
+            Console.WriteLine("-------------------------------display the added book items-------------------------------------------------");
+            foreach (var item in li)
+            {
+                Console.WriteLine("Bookid: "+item.Bookid);
+                Console.WriteLine("Bookname: "+item.Bookname);
+                Console.WriteLine("BokAuthor:"+item.Author);
+                Console.WriteLine("BookPrice: "+item.Price);
+                
+                
+            }
+
+            Console.WriteLine("----------------interface of novel class-----------------------------------------------------");
+            Novel n = new Novel();
+            n.InsertBook(98,"ponniyinselvan",350,1000);
+            Console.WriteLine("----------------abstract of bookcategory class and implement in book class-----------------------------------------------------");
+            Book b1 = new Book();
+            b1.insertbook1(34,"journal","stories");
+            Console.WriteLine("-------------------------book class constructor and its methods---------------------------------------------");
+            Book b2 = new Book(104,"mahabharatham","perundevanar",900);
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------------");
+            b2.InsertBook(67,"silapathigaram");
+            Console.WriteLine("----------------------------------------------------------------------------------------------------");
+            b2.InsertBook(34,"manimegalai",450,"seethalaisathanar");
+            Console.ReadLine();
+        }
+    }
+}

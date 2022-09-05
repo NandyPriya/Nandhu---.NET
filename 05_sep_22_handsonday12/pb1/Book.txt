@@ -1,0 +1,115 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace BookClass
+{
+	public class Book:BookCategory
+	{
+		public override void insertbook1(int cid, string cname,string  cdesc)
+		{
+			Catid = cid;
+			Catname = cname;
+			Catdesc = cdesc;
+            Console.WriteLine("Catid: " + Catid +"\n"+ "Catname: " + Catname+ "\n" + "Catdesc: " +Catdesc+"\n" );
+		}
+        public Book()
+		{
+			//Console.WriteLine("this is default constructor of book class");
+		}
+		
+		public Book(int bookid,string bookname, string author,int price)
+		{
+            Console.WriteLine("this is parameter constructor of book class");
+            Bookid = bookid;
+			
+			Bookname = bookname;
+			
+			Price = price;
+			
+			
+			Author = author;
+			Console.WriteLine("Bookid:"+Bookid+"\n"+"Bookname: "+Bookname+"\n"+"Price: "+Price+"\n"+"Author:"+Author);
+           
+        }
+        public void InsertBook(int bookid, string bookname)
+        {
+
+            Bookid = bookid;
+
+            Bookname = bookname;
+
+            
+
+
+            Console.WriteLine("Bookid:" + Bookid+"\n" + "Bookname: " + Bookname+"\n");
+
+        }
+        public new void InsertBook(int bookid, string bookname,int price)
+		{
+
+            Bookid = bookid;
+
+            Bookname = bookname;
+
+            Price = price;
+
+
+          
+            Console.WriteLine("Bookid:" + Bookid + "Bookname: " + Bookname + "Price: " + Price );
+
+        }
+        public void InsertBook(int bookid, string bookname, int price,string author)
+        {
+
+            Bookid = bookid;
+
+            Bookname = bookname;
+
+            Price = price;
+
+            Author = author;
+
+            Console.WriteLine("Bookid:" +Bookid + "\n" + "Bookname: " +"\n"+ Bookname + "Price: " + Price+"\n"+"Author: "+Author);
+
+        }
+
+
+
+        private int bookid;
+
+		public int Bookid
+		{
+			get { return bookid; }
+			set { bookid = value; }
+		}
+		private string bookname;
+
+		public string Bookname
+		{
+			get { return bookname; }
+			set { bookname = value; }
+		}
+		private int price;
+
+		public int Price
+		{
+			get { return price; }
+			set { price = value; }
+		}
+		private string author;
+
+		public string Author
+		{
+			get { return author; }
+			set { author = value; }
+		}
+
+
+
+	}
+}

@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace BookClass
+{
+    abstract public class BookCategory
+    {
+        public abstract void insertbook1(int cid, string cname,string  cdesc);
+        public BookCategory()
+		{
+			//Console.WriteLine("this is the default constructor of bookcategory");
+		}
+        public BookCategory(int catid, string catname)
+        {
+            Console.WriteLine("this is the parameterized constructor of bookcategory");
+            Catid = catid;
+
+            Catname = catname;
+
+            //Catdesc = catdesc;
+            Console.WriteLine("Catid: " + Catid + "Catname: " + Catname );
+
+        }
+        
+        
+
+
+
+        private int catid;
+
+        public int Catid
+        {
+            get { return catid; }
+            set { catid = value; }
+        }
+        private string catname;
+
+        public string Catname
+        {
+            get { return catname; }
+            set { catname = value; }
+        }
+        private string catdesc;
+
+        public string Catdesc
+        {
+            get { return catdesc; }
+            set { catdesc = value; }
+        }
+
+
+
+
+
+
+
+    }
+}

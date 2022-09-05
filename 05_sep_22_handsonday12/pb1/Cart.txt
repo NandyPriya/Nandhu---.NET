@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BookClass
+{
+    public class Cart:Book
+    {
+		private int customerid;
+
+		public int Customerid
+		{
+			get { return customerid; }
+			set { customerid = value; }
+		}
+		public static int bookcount = 0;
+		public void AddToCart()
+		{
+			Book b = new Book();
+			Console.WriteLine("enter bookid");
+			b.Bookid = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter bookname");
+			b.Bookname = Console.ReadLine();
+            Console.WriteLine("enter bookauthor");
+			b.Author = Console.ReadLine();
+            Console.WriteLine("enter bookprice");
+            b.Price = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter customerid");
+			Customerid = Convert.ToInt32(Console.ReadLine());
+			
+			InsertBookintocart(b);
+			Console.WriteLine("books added successfully");
+			bookcount++;
+        }
+		public static List<Book>blist = new List<Book>();
+		public void InsertBookintocart(Book b1)
+		{
+			blist.Add(b1);
+		}
+		public List<Book> booklist()
+		{
+			return blist;
+		}
+
+	}
+}
