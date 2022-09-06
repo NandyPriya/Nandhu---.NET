@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Abstract1;
+
+namespace Bank
+{
+    internal class Program
+    {
+        static int  savingamt1;
+        static int currentamt1;
+        static void Main(string[] args)
+        {
+            savingamt1=0; 
+            currentamt1=0;
+            Saving s1 = new Saving();
+            Console.WriteLine("enter the availabel balance in saving account");
+            savingamt1 = Convert.ToInt32(Console.ReadLine());
+            
+            s1.CalculateInterest(savingamt1);
+            s1.Printbalance(savingamt1);
+            Current c11 = new Current();
+            Console.WriteLine("eneter the availabel balance in current account");
+            currentamt1 = Convert.ToInt32(Console.ReadLine());
+            
+            c11.CalculateInterest(currentamt1);
+            c11.Printbalance(currentamt1);
+            Console.WriteLine("------------extension method used in both  account---------------------------");
+            
+             double amt1 = Saving.c;
+            Console.WriteLine("enter the amt u want to withdraw in savings account");
+            int y = Convert.ToInt32(Console.ReadLine());
+            amt1.savingwithdraw(y);
+            Console.WriteLine("enter the amt u want to deposit in savings account");
+            int y2 = Convert.ToInt32(Console.ReadLine());
+            y2.savingdeposit();
+            Console.WriteLine("------------extension method used in both  account---------------------------");
+            double amt2 = Current.d; 
+            Console.WriteLine("enter the amt u want to withdraw in current account");
+            int y1 = Convert.ToInt32(Console.ReadLine());
+           
+            amt2.currentwithdraw(y1);
+            Console.WriteLine("enter the amt u want to deposit in savings account");
+            int y3 = Convert.ToInt32(Console.ReadLine());
+            y3.currentdeposit();
+            Savings.noofdays();
+            Console.Read();
+
+        }
+    }
+}

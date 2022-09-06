@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Abstract1;
+
+namespace Abstractclass1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("--------------------Employee Class---------------------------------------------------");
+            Employee e1 = new Employee();
+            e1.Work();
+            Console.WriteLine("--------------------Manager Class---------------------------------------------------");
+            Manager m1 = new Manager();
+            m1.Work();
+            Console.WriteLine("--------------------Clerk Class---------------------------------------------------");
+            Clerk c1 = new Clerk();
+            c1.Work();
+            Console.ReadLine();
+        }
+    }
+}

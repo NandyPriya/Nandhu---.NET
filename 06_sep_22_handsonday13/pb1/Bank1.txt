@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Abstract1
+{
+    public static class Savings
+    {
+        static double withdrw1;
+        public static void savingwithdraw(this  double currentamt, int amt)
+        {
+            Console.WriteLine("------------------savings account------------------------------------");
+            Console.WriteLine("availabel balance: "+currentamt);
+            withdrw1 = currentamt - amt;
+            Console.WriteLine("after withdraw"+""+amt+""+"remaining amt is"+""+withdrw1);
+        }
+        public static void savingdeposit(this int amt)
+        {
+           
+
+            Console.WriteLine("availabel balance: " + withdrw1);
+            double deposit1 = withdrw1 + amt;
+            Console.WriteLine("after deposit" + "" + amt + "" + "remaining amt is" + "" + deposit1);
+        }
+        public static  void noofdays()
+        {
+            DateTime depositdate;
+            Console.WriteLine("enter the deposit date in the format of DD/MM/YYYY");
+            depositdate = Convert.ToDateTime(Console.ReadLine());
+            DateTime curretndate = DateTime.Now;
+          
+            TimeSpan noofdaysdeposit = depositdate.Subtract(curretndate);
+           
+            int days  = noofdaysdeposit.Days;
+            Console.WriteLine("number of days deposit amt kept: "+days);
+        }
+
+    }
+    public static class Current1
+    {
+        static double withdrw11;
+        public static void currentwithdraw(this double currentamt, int amt)
+        {
+            Console.WriteLine("-------------current account----------------------------------------------");
+            Console.WriteLine("availabel balance: " + currentamt);
+            withdrw11 = currentamt - amt;
+            Console.WriteLine("after withdraw"+""+amt+""+"remaining amt is"+""+withdrw11);
+        }
+        public static void currentdeposit(this int amt)
+        {
+            //Console.WriteLine("------------------savings account------------------------------------");
+            Console.WriteLine("availabel balance: " + withdrw11);
+            double deposit1 = withdrw11 + amt;
+            Console.WriteLine("after deposit" + "" + amt + "" + "remaining amt is" + "" + deposit1);
+        }
+    }
+
+}

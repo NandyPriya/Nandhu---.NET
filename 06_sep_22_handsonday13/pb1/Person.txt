@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Abstract1
+{
+    public abstract  class Person
+    {
+        public abstract void Work();
+    }
+    public class Employee:Person
+    {
+        public override void Work() {
+            Console.WriteLine("this is the Employee Class, work method is inherited from person class");
+        }   
+    }
+
+    public class Manager : Person
+    {
+        public override void Work()
+        {
+            Console.WriteLine("this is the Manager  Class,work method is inherited from person class");
+        }
+    }
+    public class Clerk : Person
+    {
+        public override void Work()
+        {
+            Console.WriteLine("this is the Clerk Class, work method is inherited from person class");
+        }
+    }
+}

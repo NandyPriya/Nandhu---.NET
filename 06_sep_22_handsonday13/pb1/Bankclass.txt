@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Abstract1
+{
+    interface IBank
+    {
+        void Printbalance(int sw);
+        void CalculateInterest(int sw);
+    }
+    public class Saving : IBank
+    {
+       static  int savingamt;
+        static double savinginterset;
+        public static double c;
+
+        public void CalculateInterest(int savingamt1)
+        {
+            savingamt = savingamt1;
+            savinginterset = (savingamt * 0.04);
+            Console.WriteLine("savinginterest: "+savinginterset);
+            //throw new NotImplementedException();
+        }
+
+        public void Printbalance(int savingamt1)
+        {
+            savingamt = savingamt1;
+            c = savingamt + savinginterset;
+            Console.WriteLine("balance after adding interest: "+c);
+            //throw new NotImplementedException();
+        }
+    }
+     public  class Current : IBank
+    {
+       static  int currentamt;
+        static double currentinterset;
+        public static double d;
+        public void CalculateInterest(int currentamt1)
+        {
+            currentamt = currentamt1;
+            currentinterset = (currentamt * 0.02);
+            Console.WriteLine("currentinterset: "+currentinterset);
+            //throw new NotImplementedException();
+        }
+
+        public void Printbalance(int currentamt1)
+        {
+            currentamt = currentamt1;
+            
+            d = currentamt + currentinterset;
+            Console.WriteLine("balance after adding interest: " + d);
+
+        }
+        //int amt;
+       
+    }
+
+}
