@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegatesdemoclass
+{
+    public delegate void lengthofstring(string f);
+    public class Class1
+    {
+        public void length_of_string(string h)
+        {
+                    int g =  h.Length;
+            Console.WriteLine("length of string is: "+g);
+            Console.WriteLine("Hello"+" "+h);
+           
+        }
+    }
+}

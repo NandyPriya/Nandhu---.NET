@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegatesdemoclass
+{
+    public delegate void Operations(int i, int j);
+    public class Mathsoperations
+    {
+       public void Add1(int i,int j)
+        {
+            int k = i + j;
+            Console.WriteLine("Addition of two numbers: "+k);
+        }
+        public void Subtract1(int i, int j)
+        {
+            if(i>j)
+            {
+                int k = i - j;
+                Console.WriteLine("Subtraction of two numbers: " + k);
+            }
+            else
+            {
+                Console.WriteLine("it will give negative numbers....");
+            }
+           
+        }
+        public void Multiply1(int i, int j)
+        {
+            if(j==0)
+            {
+                Console.WriteLine("you cannot multiply.............");
+            }
+            int k = i * j;
+            Console.WriteLine("Multiplication of two numbers: " + k);
+        }
+
+    }
+}

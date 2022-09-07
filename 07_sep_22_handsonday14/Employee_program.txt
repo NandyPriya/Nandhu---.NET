@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Employeeclass;
+
+namespace Employee12
+{
+    public delegate void calaculateyear(int o,int k);
+    public delegate void calaculateyear1(Employee l,int i); 
+    public delegate void convertuppercase(Concatstring s,string h);
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Employee { joiningYear = 2005};
+            Console.WriteLine("enter the employee dateofjoining in the format dd-mm-yyyy");
+            DateTime j = Convert.ToDateTime(Console.ReadLine());
+            int g = j.Year;
+            int o = DateTime.Now.Year;
+            calaculateyear cw = delegate (int j1,int h)
+            {
+                int k = j1 - h;
+                Console.WriteLine("current year: "+j1+" "+"joiningyear: "+" "+h+" "+"noofyearservice: "+k);
+            };
+
+            cw(o,g);
+            calaculateyear1 cw1 = delegate (Employee j1, int h)
+            {
+                int k =  h-j1.joiningYear;
+                Console.WriteLine("current year: " + h + " " + "joiningyear: " + " " + j1.joiningYear + " " + "noofyearservice: " + k);
+            };
+            cw1(emp, o);
+            Console.WriteLine("-----------------------------------------------------------------------------------------");
+            Concatstring b1 = new Concatstring();
+            Concatstring1 b2 = new Concatstring1(b1.concatstring11);
+            Console.WriteLine("enter first string");
+            String f = Console.ReadLine();
+            Console.WriteLine("enter second string");
+            String fe = Console.ReadLine();
+            b2(f, fe);
+            Console.WriteLine("-----------------------------------------------------------------------------------------");
+            Console.WriteLine("enter the string convert to uppercase");
+            string c =Console.ReadLine();
+            Concatstring hw = new Concatstring();
+            convertuppercase vt = delegate(Concatstring ho, string c1)
+            {
+                char t =char.ToUpper(c1[0]);
+                Console.WriteLine("first letter of the string is captilazied: "+t);
+            };
+            vt(hw, c);
+            Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.ReadLine();
+        }
+    }
+}

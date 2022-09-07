@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Delegatesdemoclass;
+
+namespace Productclass
+{
+    public delegate void product1(Product p,int a,string b);
+    public delegate void product2(Product p,int c,string v);
+    public delegate void product3(Product p);
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Product p1 = new Product();
+            Product p2 = new Product { Productid = 103, ProductName = "fruits" };
+          
+            product1 p11 = delegate (Product p,int i,String g)
+            {
+                Console.WriteLine("productid:"+i+" "+"productname: "+g);
+            };
+            product2 p12 = delegate (Product p,int l,String h)
+            {
+                Console.WriteLine("productid:" + l + " " + "productname: " + h);
+            };
+            product3 p13 = delegate (Product p23)
+            {
+                Console.WriteLine("productid:" + p23.Productid + " " + "productname: " + p23.ProductName);
+            };
+            Console.WriteLine("eneter the product id");
+            int f = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the product name");
+            string c = Console.ReadLine();
+             p11(p1,f,c);
+            Console.WriteLine("eneter the product id");
+            int f1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the product name");
+            string c1 = Console.ReadLine();
+            p12(p1,f1,c1);
+            p13(p2);
+           Console.ReadLine();
+
+
+        }
+    }
+}

@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Employeeclass
+{
+    public  delegate void Concatstring1(string s, string q);
+    public class Concatstring
+    {
+        public   void concatstring11(string h,string f)
+        {
+            string f1 = h + f;
+            Console.WriteLine("concat two string using delegates: "+f1);
+        }
+        public string Name { get; set; }
+    }
+}

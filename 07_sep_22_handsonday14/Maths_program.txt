@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Delegatesdemoclass;
+
+namespace Maths
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Mathsoperations m1 = new Delegatesdemoclass.Mathsoperations();
+            Operations[] m11 = new Operations[3] {m1.Add1,m1.Subtract1,m1.Multiply1 };
+            Operations m12 = (Operations)MulticastDelegate.Combine(m11);
+            Console.WriteLine("enter the first number to add,subtract and multiply");
+            int i = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the second number to add,subtract and multiply");
+            int j = Convert.ToInt32(Console.ReadLine());
+
+            m12(i,j);
+            Console.Read();
+        }
+    }
+}
