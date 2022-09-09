@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrary1
+{
+    public delegate void no();
+
+    public class dept
+    {
+        public int deptno { get; set; }
+        public string dname { get; set; }
+        public string location { get; set; }
+        public List<employee> prod { get; set; }
+
+        public List<employee> p1 = new List<employee>();
+        static int x ;
+        public void Adding( )
+        {
+
+            for (x=1;x<=10;x++)
+            {
+
+
+                employee e1 = new employee();
+                Console.WriteLine("enter the employee no");
+                e1.employeeid = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the employee name");
+                e1.empname = Console.ReadLine();
+                Console.WriteLine("enter the employee sal");
+                e1.Sal = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the manager name who saw the employee");
+                e1.Manager = Console.ReadLine();
+                p1.Add(e1);
+            }
+                
+            
+           
+        }
+
+
+    }
+}

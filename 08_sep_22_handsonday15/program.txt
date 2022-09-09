@@ -1,0 +1,205 @@
+using System;
+using System.Collections.Generic;
+using System.Data.Odbc;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary1;
+
+namespace lambdaexpression
+{
+    public  delegate void employee1(employee e1);
+    public delegate void em(List<employee>yu);
+    
+    public class Program:EventArgs
+    {
+        public static event employee1 A1;
+        public static event employee1 A2;
+        public static event employee1 A3;
+        public static event employee1 A4;
+        public static List<employee> l1 = new List<employee>();
+      
+       
+
+
+        public void addmethod(employee e)
+        {
+
+            l1.Add(e);
+            l1.Add(new employee{ employeeid=102,empname="nandhini",Sal=10050,Manager = "bhuvi"});
+            
+            Console.WriteLine("added successfully..........");
+           
+
+            Console.WriteLine("--------------------------------------------------------------------");
+        }
+        public static void  Addevent(employee er)
+        {
+            Program e2 = new Program();
+            employee1 e3 = new employee1(e2.addmethod);
+            e3(er);
+
+        }
+        public  void updatemethod(employee er)
+        {
+            l1.Add(er);
+
+            l1.Remove(er);
+            l1.Add(new employee { employeeid = 103, empname = "nandhiniajay", Sal = 1678, Manager="adityasriram" });
+            Console.WriteLine("updated successfully..........");
+            
+        }
+        public static void Updatevent(employee er)
+        {
+            Program e2 = new Program();
+            employee1 e3 = new employee1(e2.updatemethod);
+            e3(er);
+
+        }
+        
+       
+        public static void deleteevent(employee er)
+        {
+            Program e2 = new Program();
+            employee1 e3 = new employee1(e2.deletemethod);
+            e3(er);
+
+        }
+        public  void deletemethod(employee er)
+        {
+
+            l1.Clear();
+
+
+            Console.WriteLine("delete data successfully..........");
+            foreach (var item in l1)
+            {
+                Console.WriteLine(item.employeeid);
+                //Console.WriteLine(item.empname);
+                Console.WriteLine(item.Sal);
+                //Console.WriteLine(item.mgr);
+
+            }
+            
+        }
+        public void displayall(List<employee> u)
+        {
+            foreach (var item in u)
+            {
+                Console.WriteLine("==================");
+                Console.WriteLine(item.employeeid);
+                Console.WriteLine(item.Manager);
+                Console.WriteLine(item.empname);
+                Console.WriteLine(item.Sal);
+            }
+
+        }
+        public void displaymgr(List<employee> u)
+        {
+            Console.WriteLine("eneter the name of the manager where employee to see");
+            String h = Console.ReadLine();
+            var y = u.Where(x => x.Manager == h).ToList();
+            if(y.Count>0)
+            {
+                foreach (var item in y)
+                {
+                    Console.WriteLine("==================");
+                    Console.WriteLine(item.empname);
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("no employees is working under him");
+            }
+           
+
+        }
+        static void Main(string[] args)
+        {
+            int d;
+
+
+
+                Console.WriteLine("enter a character y so that u can continue");
+                char i = Convert.ToChar(Console.ReadLine());
+                do
+                {
+                     
+                   
+
+                    Console.WriteLine("enter user id");
+                    string h = Console.ReadLine();
+                    Console.WriteLine("enter password");
+                    string h1 = Console.ReadLine();
+                    if (h != " " && h == "bac" && h1 != " " && h1 == "abc@123")
+                    {
+                        Console.WriteLine("user log in successfully!!!!!!!!!!!!!!!!!!!");
+
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("pls check userid or password!!!!!!!!!!!!!!!!!");
+                        break;
+                    }
+
+
+
+
+
+                    A1 += Addevent;
+                    A2 += Updatevent;
+                  
+                    A4 += deleteevent;
+                    Console.WriteLine("Menu 1 for Insert, 2 for Update, 3 for delete,4 for display");
+                    int ch = Convert.ToInt32(Console.ReadLine());
+                    employee er = new employee();
+                    switch (ch)
+                    {
+                        case 1:
+                            er.employeeid = 101;
+                            er.empname = "ajay";
+                            er.Sal = 100000;
+                            er.Manager = "amarnaath";
+                            A1(er);
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter empid");
+                            er.employeeid = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter empname");
+                            er.empname = Console.ReadLine();
+                            Console.WriteLine("Enter sal");
+                            er.Sal = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter mgr");
+                            er.Manager = Console.ReadLine();
+                            A2(er);
+                            break;
+
+                        case 3: A4(er); break;
+                        
+                            
+
+                          
+                        default:
+                            break;
+                }
+                Console.WriteLine("display all the employees list");
+                Program p = new Program();
+                em hu = new em(p.displayall);
+                hu(l1);
+                Console.WriteLine("display the employees list who saw the manager");
+                dept j =  new dept();
+                no hi = new no(j.Adding);
+                hi();
+                em lo = new em(p.displaymgr);
+                lo(l1);
+
+            } while (i == 'y');
+        
+            Console.Read();
+        }
+    }
+}
