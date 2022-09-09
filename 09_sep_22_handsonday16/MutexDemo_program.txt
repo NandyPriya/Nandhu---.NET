@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+
+namespace MutexDEmo
+{
+    internal class Program
+    {
+        public static void mutexmethod()
+        {
+            
+            //using (Mutex mutex = new Mutex(true, "nandhu"))
+            //{
+            //    String thread1 = Thread.CurrentThread.Name;
+            //    Console.WriteLine("thread name: "+thread1);
+            //    mutex.WaitOne();
+            //    Console.WriteLine("lock is acquired");
+            //    mutex.ReleaseMutex();
+            //    Console.WriteLine("lock is released");
+            //}
+        }
+
+        static void Main(string[] args)
+        {
+            //Thread f = new Thread(mutexmethod);
+            // f.Name = "mutexthread";
+            // f.Start();
+            using (Mutex mutex = new Mutex(false, "ThreadingDemo"))
+            {
+
+                if (!mutex.WaitOne(5000, false))
+                {
+                    Console.WriteLine("already running....");
+                    Console.ReadLine();
+                    return;
+
+                }
+                else
+                {
+                    Console.WriteLine("app is running");
+                    Console.ReadLine();
+                }
+
+            }
+            Console.Read();
+        }
+    }
+}

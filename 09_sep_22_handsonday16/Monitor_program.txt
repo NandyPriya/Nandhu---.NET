@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading;
+
+namespace Monitor1
+{
+    internal class Program
+    {
+        static object to = new object();
+        public static void m2()
+        {
+            Monitor.Enter(to);
+            Console.WriteLine("thread creating the object");
+            try
+            {
+                String name = Thread.CurrentThread.Name;
+                Console.WriteLine("thread name: "+name);
+            }
+            finally
+            {
+                Monitor.Exit(to);
+                Console.WriteLine("thread releasing the object");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Thread t1 = new Thread(m2);
+            t1.Name = "monitorthread";
+            t1.Start();
+            Console.Read();
+        }
+    }
+}

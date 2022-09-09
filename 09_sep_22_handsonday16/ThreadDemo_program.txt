@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace ThreadDEmo
+{
+    internal class Program
+    {
+        public enum ThreadState
+        {
+            Running,
+            StopRequested,
+            SuspendRequested,
+            Background,
+            Stopped=16,
+            AbortRequested=128,
+            Aborted=256,
+            Unstarted,
+        }
+        public static  void printnumbers()
+        {
+            Console.WriteLine("print Numbers using parameterized  and non-parameretized delegate :");
+            for (int i=1; i<=10; i++)
+            {
+               
+                if(i==5)
+                {
+                    Thread.Sleep (50);
+                }
+                
+                Console.WriteLine(i);   
+            }
+            Console.WriteLine("threadname1: "+Thread.CurrentThread.Name);
+            //Console.WriteLine("threadname2: " + Thread.CurrentThread.Name);
+        }
+        public static void M1()
+        {
+            Console.WriteLine("threadname2: " + Thread.CurrentThread.Name);
+        }
+        static void Main(string[] args)
+        {
+            
+            Thread t1 = new Thread(new ThreadStart(printnumbers));
+            Thread t2 = new Thread(printnumbers);
+            Thread t3 = new Thread(M1);
+            t1.Name = "Thread1 and Thread2";
+            t1.Priority = ThreadPriority.Highest;
+            t3.Priority = ThreadPriority.Normal;
+            t2.Priority = ThreadPriority.Lowest;
+            Console.WriteLine("thread1 state:" + t1.IsAlive);
+            t1.Start();
+
+
+            bool k = t1.IsAlive;
+            Console.WriteLine("thread1 live state: "+k);
+            t1.IsBackground = true;
+            Console.WriteLine("Background: "+t1.IsBackground);
+            Console.WriteLine("ManagedThreadId: "+t1.ManagedThreadId);
+            Console.WriteLine("threadpoolthread: "+t1.IsThreadPoolThread);
+           
+           
+            t2.Start();
+           
+            t3.Name = "Thread3";
+            t3.Start();
+           
+            //Console.WriteLine("aborted: "+Thread1.Abort); 
+            int g = (int)ThreadState.Running;
+            int g1 = (int)ThreadState.Background;
+            int g2 = (int)ThreadState.StopRequested;
+            int g3 = (int)ThreadState.SuspendRequested;
+            int g4 = (int)ThreadState.Stopped;
+            int g5 = (int)ThreadState.AbortRequested;
+            int g6 = (int)ThreadState.Aborted;
+            int g7 = (int)ThreadState.Unstarted;
+            Console.WriteLine("Running:"+g+"\n"+"background: "+g1+"\n"+"Stoprequested:"+g2+"\n"+"SuspendRequested: "+g3+"\n"+"Stopped: "+g4+"\n"+"Unstarted: "+g7);
+            Console.ReadLine();
+        }
+    }
+}
