@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace simplilearn_project
+{   internal class Program
+    {
+
+        public string Name;
+        public int std;
+        public List<Program> ReadUser()
+        {
+            List<Program> lstUser;
+
+            string[] content1 = File.ReadAllLines("C:\\Users\\narmatha\\Documents\\studentdetails1.txt");
+            if (content1 != null)
+            {
+
+                string[] s1;
+                lstUser = new List<Program>();
+                for (int i = 0; i < content1.GetLength(0); i++)
+                {
+                    s1 = Regex.Split(content1[i], ",");
+                    //need some validation
+                    if (s1 != null && s1.GetLength(0) > 1)
+                    {
+                        Program obj = new Program();
+                        obj.Name = s1[0];
+                        int.TryParse(s1[1], out obj.std);
+                        lstUser.Add(obj);
+                    }
+                }
+                Console.WriteLine("Sorting based on names in a text file:");
+
+                Console.WriteLine("-------------------------------------------");
+                foreach (var i in lstUser.OrderBy(o => o.Name).ToList())
+                {
+                    Console.WriteLine("Name:" + i.Name +"        "+ "Std:" + i.std);
+                }
+                
+
+                Console.WriteLine("---------------------------------------");
+
+            }
+            else
+            {
+                Console.WriteLine("Empty!!");
+            }
+            return null;
+
+
+        }
+        public void search11()
+        {
+            var con = File.ReadAllLines("C:\\Users\\narmatha\\Documents\\studentdetails1.txt");
+
+            Console.WriteLine("Enter the name already in txt file so that u can search");
+
+
+            string fu = Console.ReadLine();
+
+            foreach (string item in con)
+            {
+                if (item.Contains(fu))
+                {
+
+                    Console.WriteLine(item + " " + "is found");
+
+
+
+                }
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Program c1 = new Program();
+            c1.ReadUser();
+            c1.search11();
+            
+           
+            Console.Read();
+        }
+    }
+}
