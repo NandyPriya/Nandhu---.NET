@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            // Console.WriteLine("hi");
+            string path = @"C:\Users\narmatha\source\repos\ConsoleApp1\ClassLibrary1\bin\Debug\ClassLibrary1.dll";
+            Assembly asm = Assembly.LoadFrom(path);
+            Type[] types = asm.GetTypes();
+            Type t = null;
+          
+            foreach (var item in types)
+            {
+                t = asm.GetType(item.FullName);
+                object obj = Activator.CreateInstance(t);
+                item.InvokeMember("cube", BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, obj, new object[1] {19.0});
+                item.InvokeMember("sqrt", BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, obj, new object[1] { 100.0 });
+                break;
+                
+            }
+            Console.Read();
+
+        }
+    }
+}
