@@ -1,0 +1,109 @@
+SOURCE CODE:
+------------------------------------------------------------------
+program.cs
+--------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace phase2project3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("----------student details--------------------------");
+            student s = new student();
+            s.getdetails();
+            s.showdetails();
+            Console.WriteLine("----------teacher details--------------------------");
+            teacher t = new teacher();
+            t.getdetails();
+            t.showdetails();
+            Console.WriteLine("----------subject details--------------------------");
+            subject s1 = new subject();
+            s1.getdetails();
+            s1.showdetails();
+            Console.ReadLine();
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------
+student.cs
+--------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
+using System.Xml.Linq;
+
+namespace phase2project3
+{
+    public class student
+    {
+        protected string name;
+        protected int Class;
+        protected string section;
+        public void getdetails()
+        {
+            Console.WriteLine("enter the student name");
+            name = Console.ReadLine();
+            Console.WriteLine("enter the class");
+            Class = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the section of class");
+            section = Console.ReadLine();
+        }
+        public void showdetails()
+        {
+            Console.WriteLine("student name: "+name);
+            Console.WriteLine("class: "+Class);
+            Console.WriteLine("section of class: "+section);
+        }
+
+    }
+    public class teacher : student
+    {
+        string subject;
+        public void getdetails()
+        {
+            Console.WriteLine("enter the teacher name");
+            name = Console.ReadLine();
+            Console.WriteLine("enter the class");
+            Class = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the section of class");
+            section = Console.ReadLine();
+            Console.WriteLine("enter the subject");
+            subject = Console.ReadLine();
+        }
+        public void showdetails()
+        {
+            Console.WriteLine("teacher name: " + name);
+            Console.WriteLine("class: " + Class);
+            Console.WriteLine("section of class: " + section);
+            Console.WriteLine("subject: "+subject);
+        }
+    }
+    public class subject:student
+    {
+        string subjectcode;
+        public void getdetails()
+        {
+            Console.WriteLine("enter the subject name");
+            name = Console.ReadLine();
+            Console.WriteLine("enter the subject code");
+            subjectcode = Console.ReadLine();
+
+        }
+        public void showdetails()
+        {
+            Console.WriteLine("subject name: " + name);
+            Console.WriteLine("subject code: "+subjectcode);
+        }
+        }
+}
+---------------------------------------------------------------------------------
