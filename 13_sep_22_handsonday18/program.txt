@@ -1,0 +1,178 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Movierentalclass;
+
+namespace Movierental
+{
+    public class Program:UserModule
+    {
+        static void Main(string[] args)
+        {
+            string e;
+            do
+            {
+                Console.WriteLine("1.UserModule \n 2.AdminModule\n");
+                int g = Convert.ToInt32(Console.ReadLine());
+                switch (g)
+                {
+
+                    case 1:
+
+                        usermodule1(); break;
+                    case 2:
+
+                        adminmodule1();
+                        break;
+                    default: break;
+                }
+                Console.WriteLine("do you want to continue in Whole module(yes/no) ");
+                e = Console.ReadLine();
+            } while (e=="yes");
+            
+            
+
+            Console.ReadLine();
+
+        }
+
+        private static string adminmodule1()
+        {
+            string x;
+            do
+            {
+                AdminUser gh = new AdminUser();
+                Console.WriteLine("ADMIN MODULE\n 1.identify with unique phone number \n 2.add,update and remove movies");
+                int d = Convert.ToInt32(Console.ReadLine());
+                switch (d)
+                {
+                    case 1:
+                        gh.customerdetails();
+                        gh.identifymobileno(8876543289); break;
+                    case 2:
+                        gh.tmoviesname();
+                        gh.emoviesname();
+                       
+                            break;
+                    default: break;
+                }
+
+
+
+
+                Console.WriteLine("do you want to continue in admin module(yes/no)");
+                x = Console.ReadLine();
+
+            } while (x == "yes");
+            
+            return x;
+        }
+
+        private static void usermodule1()
+        {
+            string userid, password;
+            Console.WriteLine("enter user id");
+
+            userid = Console.ReadLine();
+            Console.WriteLine("enter passsword");
+
+            password = Console.ReadLine();
+            char v;
+            do
+            {
+                UserModule module = new UserModule();
+                if (userid == "nandhu" && password == "N@ndhu")
+                {
+
+                    Console.WriteLine("login successfully!!!!!!!!!!!!!!!!!!!!!");
+                    Console.WriteLine("list of movies that you can rent................");
+                    Console.WriteLine("-----------------------------------------------------");
+                    Console.WriteLine("do you want which langauge movies");
+                    int g11;
+                    Console.WriteLine("1.Tamil" + "\n" + "2.English" + "\n");
+                    g11 = Convert.ToInt32(Console.ReadLine());
+                    switch (g11)
+                    {
+                        case 1:
+                            module.showtamilmovies();
+                            Console.WriteLine("search tamil movies");
+                            string h;
+                            h = Console.ReadLine();
+                            foreach (var item in k)
+                            {
+                                bool yq = item.Contains(h);
+                                if (yq == false)
+                                {
+                                    Console.WriteLine(h + " " + "not found,then cancel the rental");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(h+" "+"is found!!!!!!!!!!!!");
+                                    break;
+                                }
+                            }
+                            
+                            break;
+                        case 2:
+                            module.showenglishmovies();
+                            Console.WriteLine("search english movies");
+                            string h1;
+                            h1 = Console.ReadLine();
+                            foreach (var item in l)
+                            {
+                                bool ui = item.Contains(h1);
+                                if (ui == false)
+                                {
+                                    Console.WriteLine(h1 + " " + "not found,then cancel the rental");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(h1 + " " + "is found!!!!!!!!!!!!");
+                                    break;
+                                }
+
+
+                            }
+                           
+                            break;
+                        default:
+                            break;
+                    }
+                    int y;
+                    Console.WriteLine("1.platinum " + "\n" +
+                        "2.Gold " + "\n" + " 3.Silver" + " \n");
+                    y = Convert.ToInt32(Console.ReadLine());
+                    switch (y)
+                    {
+                        case 1:
+                            Category1 category1 = new Category1();
+                            category1.Platinum(); break;
+                        case 2:
+                            Gold g1 = new Gold();
+                            g1.Gold1(); break;
+                        case 3:
+                            Silver s1 = new Silver();
+                            s1.Silver1(); break;
+                    }
+
+
+
+
+
+                }
+                else
+                {
+                    Console.WriteLine("pls enter correct userid and password");
+                }
+                Console.WriteLine("do you want to continue in user module (y/n)");
+                v = Convert.ToChar(Console.ReadLine());
+            } while (v == 'y');
+        }
+    }
+}
+
