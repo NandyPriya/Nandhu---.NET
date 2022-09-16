@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace binaryserialDemo
+{
+    [Serializable()]
+    public class Class1
+    {
+        public double amt { get; set; }
+        public double f;
+        int y;
+        public DateTime t, t1;
+        
+        public void Rentedmovies()
+        {
+            
+        t = new DateTime(05 / 09 / 2022);
+        t1 = new DateTime(14 / 09 / 2022);
+        TimeSpan j = t1 - t;
+         y = j.Days;
+         f = y * (100 + (100 * 0.18));
+            amt = f;
+            
+        }
+       public  List<string> list = new List<string>();
+        public List<string> list2;
+        public List<string> register()
+        {
+            list.Add("nandhini");
+            list.Add("TN");
+            list.Add("632516");
+            list.Add("India");
+            return list2;
+        }
+        
+    }
+}

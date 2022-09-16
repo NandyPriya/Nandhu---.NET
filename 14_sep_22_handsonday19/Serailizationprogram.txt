@@ -1,0 +1,145 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SerializationClass1;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Xml.Serialization;
+using System.Web.Script.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
+
+namespace SerializationDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("1.Binary\n 2.xml \n 3.json \n 4.soap\n");
+            int z = Convert.ToInt32(Console.ReadLine());
+            switch (z)
+            {
+                case 1:Binaryserailization1();
+
+                Binarydeserialization();break;
+                case 2: xmlserialization();
+                        xmldeserialization();break;
+                case 3:jsonserialization();
+                       jsondeserialization();break;
+                case 4:
+                    soapserialization();
+                    soapdeserialization(); break;
+                default:break;
+            }
+           
+
+
+
+            Console.ReadLine();
+        }
+
+        private static void soapdeserialization()
+        {
+            FileStream fg1 = new FileStream(@"sust.soap", FileMode.Open, FileAccess.Read);
+            SoapFormatter soap1 = new SoapFormatter();
+            soapclass s11 = (soapclass)soap1.Deserialize(fg1);
+            Console.WriteLine("Availstock after rented:" + s11.availabelstock1);
+        }
+
+        private static void soapserialization()
+        {
+            soapclass c31 = new soapclass();
+            c31.rentedmovies();
+            //c3.releasemovies();
+            FileStream fg = new FileStream(@"sust.soap", FileMode.Create, FileAccess.Write);
+            SoapFormatter soap = new SoapFormatter();
+            soap.Serialize(fg, c31);
+            fg.Flush();
+            fg.Close();
+            fg.Dispose();
+        }
+
+        private static void jsondeserialization()
+        {
+            FileStream fileStream1 = new FileStream(@"cust.json", FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fileStream1);
+            string v = sr.ReadToEnd();
+            JavaScriptSerializer js1 = new JavaScriptSerializer();
+            customer2 cv = js1.Deserialize<customer2>(v);
+            Console.WriteLine("Already watched movies: " + cv.alreadyname);
+        }
+
+        private static void jsonserialization()
+        {
+            customer2 c2 = new customer2();
+
+            c2.alreadywatchmovies("karnan");
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            StringBuilder s1 = new StringBuilder();
+            js.Serialize(c2, s1);
+            Console.WriteLine(s1);
+            FileStream fileStream = new FileStream(@"cust.json", FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fileStream);
+            sw.Write(s1);
+            sw.Close();
+            fileStream.Close();
+        }
+
+        private static void xmldeserialization()
+        {
+            FileStream fs3 = new FileStream(@"customer1.xml", FileMode.Open, FileAccess.Read);
+            XmlSerializer xmll = new XmlSerializer(typeof(customer2));
+            customer2 yu = (customer2)xmll.Deserialize(fs3);
+            Console.WriteLine("moviename i searched: " + yu.moviename);
+            fs3.Flush();
+            fs3.Close();
+            fs3.Dispose();
+        }
+
+        private static void xmlserialization()
+        {
+            customer2 c11 = new customer2();
+            c11.tmovies();
+            c11.emoviesname();
+            c11.searchmovies("Thor");
+            //Console.WriteLine(h);
+            FileStream fs2 = new FileStream(@"customer1.xml", FileMode.Create, FileAccess.Write);
+            XmlSerializer xml = new XmlSerializer(typeof(customer2));
+            xml.Serialize(fs2, c11);
+            fs2.Flush();
+            fs2.Close();
+            fs2.Dispose();
+        }
+
+        private static void Binarydeserialization()
+        {
+            FileStream fs1 = new FileStream(@"customer.bin", FileMode.Open, FileAccess.Read);
+            BinaryFormatter formatter1 = new BinaryFormatter();
+            Customeruser vy = (Customeruser)formatter1.Deserialize(fs1);
+            Console.WriteLine("Userid: "+vy.Userid);
+            Console.WriteLine("Password: "+vy.Password);
+            Console.WriteLine("Loginstatus: "+vy.Loginstatus);
+            Console.WriteLine("Datetime: "+vy.date1);
+            fs1.Flush();
+            fs1.Close();
+            fs1.Dispose();
+        }
+
+        private static void Binaryserailization1()
+        {
+            Customeruser c1 = new Customeruser();
+            c1.Userid = 8270559877;
+            c1.Password = "123456789";
+            c1.date1 = DateTime.Now; 
+            c1.ValidateUser();
+            FileStream fs = new FileStream(@"customer.bin", FileMode.Create, FileAccess.Write);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fs, c1);
+            fs.Flush();
+            fs.Close();
+            fs.Dispose();
+           
+        }
+    }
+}

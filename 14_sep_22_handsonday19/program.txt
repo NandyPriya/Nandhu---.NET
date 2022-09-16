@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace binaryserialDemo
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("1.user borrow a movie amt to be calculated\n 2.when user register a file must be created and he edits his data update it ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            switch (a)
+            {
+                case 1:
+                    Binaryserialization1();
+                    Binaerydeserialization(); break;
+                case 2:
+                    xmlmethod();
+                    xmldeserailize(); break;
+                default:break;
+            }
+            
+            
+            Console.Read();
+
+            void xmldeserailize()
+            {
+                FileStream jk1 = new FileStream("e1.xml", FileMode.Open, FileAccess.Read);
+                XmlSerializer hb1 = new XmlSerializer(typeof(Class1));
+                Class1 hn = (Class1)hb1.Deserialize(jk1);
+                List<string> lo = hn.list;
+                foreach (var item in lo)
+                {
+                    Console.WriteLine(item);
+                }
+                jk1.Flush();
+                jk1.Close();
+                jk1.Dispose();
+            }
+        }
+
+        private static void xmlmethod()
+        {
+            Class1 kl = new Class1();
+            kl.register();
+            FileStream jk = new FileStream("e1.xml", FileMode.Create, FileAccess.Write);
+            XmlSerializer hb = new XmlSerializer(typeof(Class1));
+            hb.Serialize(jk, kl);
+            jk.Flush();
+            jk.Close();
+            jk.Dispose();
+        }
+
+        private static void Binaerydeserialization()
+        {
+            FileStream fs111 = new FileStream(@"amt11.bin", FileMode.Open, FileAccess.Read);
+            BinaryFormatter form1 = new BinaryFormatter();
+            Class1 ko = (Class1)form1.Deserialize(fs111);
+            Console.WriteLine("amt to be paid for rented movies: " + ko.amt);
+            fs111.Flush();
+            fs111.Close();
+            fs111.Dispose();
+        }
+
+        private static void Binaryserialization1()
+        {
+            Class1 hj = new Class1();
+            hj.Rentedmovies();
+            FileStream fs11 = new FileStream(@"amt11.bin", FileMode.Create, FileAccess.Write);
+            BinaryFormatter form = new BinaryFormatter();
+            form.Serialize(fs11, hj);
+            fs11.Flush();
+            fs11.Close();
+            fs11.Dispose();
+        }
+    }
+}

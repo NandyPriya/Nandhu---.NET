@@ -1,0 +1,147 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SerializationClass1
+{
+    [Serializable()]
+    public class Customeruser
+    {
+        public long Userid { get; set; }
+        public string Password{ get; set; }
+        public bool Loginstatus { get;  set; }
+        public DateTime date1;
+        public void ValidateUser()
+        {
+            if(Userid == 8270559877 && Password == "123456789")
+            {
+                Loginstatus = true;
+                Console.WriteLine("loginstatus: "+Loginstatus);
+            }
+            else
+            {
+                Loginstatus =  false;
+                Console.WriteLine("loginstatus: " + Loginstatus);
+            }
+        }
+       
+        
+    }
+    [Serializable()]
+    public class customer2
+    {
+        public List<string> l1 = new List<string>();
+        public List<string> Emovies = new List<string>();
+        public List<string> mv = new List<string>();
+       public ArrayList rentedmovie = new ArrayList();
+        
+
+        public string moviename { get; set; }
+        public string alreadyname { get; set; }
+        public List<string> tmovies()
+        {
+            l1.Add("Ponniyin Selvam");
+            l1.Add("Baahubali");
+            l1.Add("Baahubali 2");
+            l1.Add("Master");
+            l1.Add("Vikram");
+            l1.Add("Viruman");
+            l1.Add("Beast");
+            l1.Add("Don");
+            //foreach (var item in l1)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            return l1;
+        }
+        public void emoviesname()
+        {
+
+            Emovies.Add("The Gray Man");
+            Emovies.Add("Doctor Strange in the multiverse of madness");
+            Emovies.Add("Thor");
+            Emovies.Add("Spiderman");
+            Emovies.Add("Joker");
+
+            //foreach (var item in Emovies)
+            //{
+            //    Console.WriteLine(item);
+            //}
+        }
+        public void searchmovies(string movie)
+        {
+           
+        
+           
+            foreach (var item in Emovies)
+            {
+                if (item.Contains(movie))
+                {
+                    moviename = movie;
+                    break;
+                }
+
+            }
+            
+        }
+        public void alreadywatchmovies( string name)
+        {
+            mv.Add("Don");
+            mv.Add("Beast");
+            mv.Add("karnan");
+            foreach (var item in mv)
+            {
+                if (item.Contains(name))
+                {
+                    alreadyname = name;
+                    break;
+                }
+
+            }
+        }
+       
+        //public void releasemovies()
+        //{
+        //    for (int i = 0; i < 2; i++)
+        //    {
+        //        Console.WriteLine("enter a movie u want to release");
+        //        String v1 = Console.ReadLine();
+
+                
+        //        rentcount--;
+        //    }
+        //    availabelstock = initialstock - rentcount;
+
+        //}
+
+
+    }
+    [Serializable()]
+    public class soapclass
+    {
+       
+        public static int rentcount = 0;
+        public static  int initialstock = 10;
+        public int availabelstock1;
+        
+        public static int availabelstock { get; set; }
+        public void rentedmovies()
+        {
+
+
+            
+            rentcount++;
+          
+            rentcount++;
+
+            availabelstock1 = initialstock - rentcount;
+            availabelstock = availabelstock1;
+           
+
+        }
+    }
+}
