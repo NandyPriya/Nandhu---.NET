@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Movierentalclass
+{
+    public class AdminUser
+    {
+        public  List<Customer> v1 = new List<Customer>();
+        public static  List<string> tmovies = new List<string>();
+        public static List<string> Emovies = new List<string>();
+        public void tmoviesname()
+        {
+
+            tmovies.Add("Ponniyin Selvam");
+            tmovies.Add("Baahubali");
+            tmovies.Add("Baahubali 2");
+            tmovies.Add("Master");
+            tmovies.Add("Vikram");
+            tmovies.Add("Viruman");
+            tmovies.Add("Beast");
+            tmovies.Add("Don");
+            tmovies.Add("Karnan");
+            tmovies.Add("Maaran");
+            Console.WriteLine("tamil movies added successfully!!!!!!!!!!!!!!!!");
+            foreach (var item in tmovies)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("enter movie name which u want to remove");
+            string g = Console.ReadLine();
+            tmovies.Remove(g);
+            Console.WriteLine("removed successfully!!!!!!!!!!!");
+            foreach (var item in tmovies)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("enter movie name which u want to update");
+            string g1 = Console.ReadLine();
+            tmovies.Add(g1);
+            Console.WriteLine("updated successfully!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            foreach (var item in tmovies)
+            {
+                Console.WriteLine(item);
+            }
+
+
+        }
+        public void emoviesname()
+        {
+
+            Emovies.Add("The Gray Man");
+            Emovies.Add("Doctor Strange in the multiverse of madness");
+            Emovies.Add("Thor");
+            Emovies.Add("Spiderman");
+            Emovies.Add("Joker");
+            Console.WriteLine("English movies added successfully!!!!!!!!!!!!!!!!");
+            foreach (var item in Emovies)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("enter movie name which u want to remove");
+            string g = Console.ReadLine();
+            Emovies.Remove(g);
+            Console.WriteLine("removed successfully!!!!!!!!!!!");
+            foreach (var item in Emovies)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("enter movie name which u want to update");
+            string g1 = Console.ReadLine();
+            Emovies.Add(g1);
+            Console.WriteLine("updated successfully!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            foreach (var item in Emovies)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+        public void customerdetails()
+        {
+            v1.Add(new Customer { Mobilenumber = 9943503699,Custname = "Nandhini",Age=21 });
+            v1.Add(new Customer { Mobilenumber = 8072077135, Custname = "amarnaath", Age = 21 });
+            Console.WriteLine("customer details added successfully!!!!!!!!!!!!!!!!!!!");
+            
+        }
+        public void identifymobileno(long mobile)
+        {
+            List<Customer>c1 = v1.FindAll(x => x.Mobilenumber == mobile);
+            foreach (var item in c1)
+            {
+                if(item.Mobilenumber == mobile)
+                {
+                    Console.WriteLine("customer is registered!!!!!!!!!!!!!!!!!!!");
+                    
+                }
+                
+
+            }
+
+           
+
+
+        }
+       
+
+    }
+    public class Customer
+    {
+        public long Mobilenumber { get; set; }
+        public string Custname { get; set; }
+        public int Age { get; set; }
+    }
+}

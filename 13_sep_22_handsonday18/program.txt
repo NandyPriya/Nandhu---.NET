@@ -4,22 +4,82 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using MovieRentalDemo;
+using Movierentalclass;
 
-
-namespace MovieRentalSystem
+namespace Movierental
 {
-    internal class Program:UserModule
+    public class Program:UserModule
     {
         static void Main(string[] args)
+        {
+            string e;
+            do
+            {
+                Console.WriteLine("1.UserModule \n 2.AdminModule\n");
+                int g = Convert.ToInt32(Console.ReadLine());
+                switch (g)
+                {
+
+                    case 1:
+
+                        usermodule1(); break;
+                    case 2:
+
+                        adminmodule1();
+                        break;
+                    default: break;
+                }
+                Console.WriteLine("do you want to continue in Whole module(yes/no) ");
+                e = Console.ReadLine();
+            } while (e=="yes");
+            
+            
+
+            Console.ReadLine();
+
+        }
+
+        private static string adminmodule1()
+        {
+            string x;
+            do
+            {
+                AdminUser gh = new AdminUser();
+                Console.WriteLine("ADMIN MODULE\n 1.identify with unique phone number \n 2.add,update and remove movies");
+                int d = Convert.ToInt32(Console.ReadLine());
+                switch (d)
+                {
+                    case 1:
+                        gh.customerdetails();
+                        gh.identifymobileno(8876543289); break;
+                    case 2:
+                        gh.tmoviesname();
+                        gh.emoviesname();
+                       
+                            break;
+                    default: break;
+                }
+
+
+
+
+                Console.WriteLine("do you want to continue in admin module(yes/no)");
+                x = Console.ReadLine();
+
+            } while (x == "yes");
+            
+            return x;
+        }
+
+        private static void usermodule1()
         {
             string userid, password;
             Console.WriteLine("enter user id");
 
-             userid = Console.ReadLine();
+            userid = Console.ReadLine();
             Console.WriteLine("enter passsword");
 
-           password = Console.ReadLine();
+            password = Console.ReadLine();
             char v;
             do
             {
@@ -37,38 +97,48 @@ namespace MovieRentalSystem
                     switch (g11)
                     {
                         case 1:
-                            module.tmoviesname();
+                            module.showtamilmovies();
                             Console.WriteLine("search tamil movies");
                             string h;
                             h = Console.ReadLine();
-                            foreach (var item in module.tmovies)
+                            foreach (var item in k)
                             {
-                                if (item.Contains(h))
+                                bool yq = item.Contains(h);
+                                if (yq == false)
                                 {
-                                    Console.WriteLine(h + " " + "is found !!!!!!!");
+                                    Console.WriteLine(h + " " + "not found,then cancel the rental");
+                                    break;
                                 }
-
-
-
+                                else
+                                {
+                                    Console.WriteLine(h+" "+"is found!!!!!!!!!!!!");
+                                    break;
+                                }
                             }
-                            Console.WriteLine(h + " " + "that movie is not in the list");
+                            
                             break;
                         case 2:
-                            module.emoviesname();
+                            module.showenglishmovies();
                             Console.WriteLine("search english movies");
                             string h1;
                             h1 = Console.ReadLine();
-                            foreach (var item in module.Emovies)
+                            foreach (var item in l)
                             {
-                                if (item.Contains(h1))
+                                bool ui = item.Contains(h1);
+                                if (ui == false)
                                 {
-                                    Console.WriteLine(h1 + " " + "is found !!!!!!!");
+                                    Console.WriteLine(h1 + " " + "not found,then cancel the rental");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(h1 + " " + "is found!!!!!!!!!!!!");
+                                    break;
                                 }
 
 
-
                             }
-                            Console.WriteLine(h1 + " " + "that movie is not in the list");
+                           
                             break;
                         default:
                             break;
@@ -99,11 +169,10 @@ namespace MovieRentalSystem
                 {
                     Console.WriteLine("pls enter correct userid and password");
                 }
-                Console.WriteLine("do you want to continue press y");
-                 v = Convert.ToChar(Console.ReadLine());
+                Console.WriteLine("do you want to continue in user module (y/n)");
+                v = Convert.ToChar(Console.ReadLine());
             } while (v == 'y');
-            
-            Console.ReadLine(); 
         }
     }
 }
+

@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieRentalDemo
+namespace Movierentalclass
 {
     public class Category1 : UserModule
     {
-       protected  int i;
+        protected int i;
         protected string k;
         double rt; int gf;
         DateTime t, t1;
-        protected  List<string> borrowlist = new List<string>();
+        protected List<string> borrowlist = new List<string>();
         public void Platinum()
         {
-           
-            if(initialstock == 0)
+
+            if (initialstock == 0)
             {
                 Console.WriteLine("cannot rent a movie becoz movie list becomes zero");
             }
@@ -36,11 +36,11 @@ namespace MovieRentalDemo
                     {
                         borrowlist.Add(k);
                         rentedstock++;
-                       
+
                     }
 
-                   
-                   
+
+
 
 
                 }
@@ -62,15 +62,15 @@ namespace MovieRentalDemo
                 Console.WriteLine("availabel rent movie in tamil: " + availabelstock);
                 Console.WriteLine("amt to be paid for noof.days rented: " + rt);
             }
-           
+
         }
     }
-        public class Gold:Category1
-        {
+    public class Gold : Category1
+    {
         double rt; int gf;
         DateTime t12, t13;
         public void Gold1()
-            {
+        {
             if (initialstock == 0)
             {
                 Console.WriteLine("cannot rent a movie becoz movie list becomes zero");
@@ -86,7 +86,7 @@ namespace MovieRentalDemo
                     if (k == null)
                     {
                         Console.WriteLine("null");
-                        
+
                         //moviecounttamil++;
                     }
                     else
@@ -98,14 +98,13 @@ namespace MovieRentalDemo
                         {
                             Console.WriteLine(item);
                         }
-                        borrowlist.Remove(k);
-                        Console.WriteLine("after removing some movies in gold ");
+                       
                         foreach (var item in borrowlist)
                         {
                             Console.WriteLine(item);
                         }
                     }
-                   
+
 
                 }
                 Console.WriteLine("enter the rented date");
@@ -115,21 +114,21 @@ namespace MovieRentalDemo
                 TimeSpan yo = t12.Subtract(t13);
                 gf = yo.Days;
                 rt = gf * movimoney;
-                
+
                 availabelstock = initialstock - rentedstock;
                 Console.WriteLine("availabel rent movie in tamil: " + availabelstock);
                 Console.WriteLine("amt to be paid for noof.days rented: " + rt);
                 Console.WriteLine();
             }
         }
-           
-        }
-        public class Silver : Category1
-        {
+
+    }
+    public class Silver : Category1
+    {
         double rt; int gf;
         DateTime t, t1;
         public void Silver1()
-            {
+        {
             if (initialstock == 0)
             {
                 Console.WriteLine("cannot rent a movie becoz movie list becomes zero");
@@ -151,7 +150,7 @@ namespace MovieRentalDemo
                         borrowlist.Add(k);
                         rentedstock++;
                     }
-                   
+
 
                 }
                 Console.WriteLine("enter the rented date");
@@ -171,13 +170,9 @@ namespace MovieRentalDemo
                 Console.WriteLine("amt to be paid for noof.days rented: " + rt);
             }
         }
-           
-        }
-
-
-
 
     }
 
 
 
+}
