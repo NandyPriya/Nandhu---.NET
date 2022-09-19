@@ -1,0 +1,50 @@
+SQL ASSIGNMENT
+------------------------------------------------------------
+
+
+1)create database shopping;
+use shopping;
+------------------------------------
+2)a)create table Customer(
+custid int NOT NULL primary key,
+custname varchar(20),
+city varchar(20),
+state varchar(20)
+)
+b)create table products(
+prodid int NOT NULL primary key,
+prodname varchar(20),
+unitprice int,
+unitofmeasurement varchar(20),
+QtyinStock int
+)
+c)create table sales_header(
+invno int NOT NULL,invdate varchar(20),invamt int,disPercent int
+)
+d)create table sales_detail(
+invno int NOT NULL,
+custid int NOT NULL,
+prodid int NOT NULL,
+qtysold int NOT NULL
+)
+
+
+
+2e)alter table sales_header
+
+add primary key(invno);
+alter table sales_detail
+add foreign key(invno)references sales_detail(invno)
+-------------------------------------------------------
+3)alter table customer
+add foreign key(custid)references Customer(custid)
+alter table products
+add foreign key(prodid)references Customer(prodid)
+
+---------------------------------------
+4)alter table sales_detail
+drop column qtysold
+-----------------------------
+5)alter table sales_detail
+Add Qty int
+---------------------------------
