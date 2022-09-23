@@ -1,0 +1,50 @@
+TASK 2
+------------------------
+-----------------------------
+1)select * from member where year(Acc_Open_Date) = 2006;
+----------------------------------------
+2)select Book_Name from book where author='Loni' and cost < 600.00
+-------------------------------------------
+3)select * from issue where Return_date is null
+------------------------------------------------------------
+4)update issue set Return_date ='31-dec-2006' where Lib_Issue_Id <>7005 and Lib_Issue_Id <>7006;
+------------------------------------------------------------
+5) select* from Issue where Datediff( Day,Issue_Date,Return_Date) >30
+
+------------------------------
+6)select * from book where cost between 500.00 and 750.00 and Category='database';
+-----------------------------------
+7)select * from book where category in('science','fiction','database','management')
+---------------------------------------------
+8)select * from member order by penalty_amount desc;
+---------------------------------------------------------
+9)select * from book order by category asc,cost desc
+-------------------------------------------------------
+10)select * from book where Book_Name like '%SQL%'
+-----------------------------------------------------
+11)select * from member where member_name like 'R%' or member_name like 'G%' and member_name like '%I%'
+-------------------------------------------------
+
+13)Select CONCAT( Book_No,' ','is written by',' ' ,Author) as 'Book id and author' from Book
+
+------------------------------------------
+17)Select CONCAT( Book_Name,' ','*' ,Author) as 'Book name and author' from Book
+----------------------------------------------
+18)select lib_issue_id,issue_date,return_date,Datediff( Day,Issue_Date,Return_Date)from issue;
+-----------------------------------------------------------
+19)select * from issue order by Issue_Date
+------------------------------------------------------------
+20)select sum(max_books_allowed)as totalno_of_books from member where Member_Id = 1;
+-------------------------------------------------------------------------
+21)select sum(Penalty_amount) from Member
+------------------------------------------------------
+22)select sum(cost)as totalcostofdatabasecategory from Book where category ='database'
+--------------------------------------------------------------
+23)select min(cost)cheapestprice from book
+---------------------------------------------------------------
+24)select min(issue_date) as 'firstbook issued'  from issue;
+  
+---------------------
+25)select max(issue_date)as 'latest book issued' from issue;
+---------------------------
+26)select AVG(cost) from book where Category = 'database';
