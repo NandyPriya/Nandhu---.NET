@@ -1,0 +1,77 @@
+create database library1
+use library1
+
+create table Member_C(
+Member_Id numeric(5) constraint pk_mid primary key,
+Acc_Open_Date date constraint c_aod default getdate(),
+Max_Allowed_Books numeric(2) constraint c_mab check(Max_Allowed_Books < 100),
+Penalty numeric(3) constraint c_p check(penalty <=1000)
+)
+----------------------------------------------------------------------------
+
+create table Book_C(
+Book_No numeric(6) constraint pk_bn primary key,
+Book_Name varchar(30) constraint c_bname not null,
+Category varchar(30)  constraint c_cc not null
+)
+-------------------------------------------------------------------------
+create table Issue_C (
+Lib_Issue_Id numeric(10) constraint c_lii primary key,
+Member_Id numeric(5,0) constraint c_mi foreign key references Member_C(Member_Id ) ,
+Book_No numeric(6,0) constraint c_bn1 foreign key references Book_C(Book_No ),
+Issue_date date,
+Return_date date,
+ constraint c_ir check(Issue_date < Return_date)
+)
+---------------------------------------------------------------------------
+alter table Book_C
+add Price numeric(4)  
+alter table Book_C
+add constraint c_price check(Price < 2500)
+ exec sp_columns Book_C
+
+-------------------------------------------------------------
+ SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_NAME='Issue_C';
+
+--select CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+--from USER_CONSTRAINTS
+--where TABLE_NAME='STUDENT';
+--------------------------------------------------------------
+
+alter table Issue_C nocheck constraint c_mi
+alter table Issue_C nocheck constraint c_bn1
+---------------------------------------------------------------------
+
+
+create view bookyuh1 as 
+select i.Lib_issue_id,b.Book_Name,i.Issue_date from Issue_C i inner join Book_C b on i.Book_No = b.Book_No inner join Member_C m on i.Member_Id = m.Member_Id where b.Price between 500 and 750 and b.category in('database','RDBMS')
+------------------------------------------------------------------------
+
+
+insert into Book_C values(100,'ponniyin selvan','Fiction',2000)
+insert into Book_C values(101,'mahabharatam','Science',1000)
+create view view3
+as 
+select Book_Name from Book_C where price>500 with check option
+
+select * from view3
+----------------------------------------------------------------------------
+
+create view view5
+as select * from Book_C with check option
+insert into view5 values(103,'Database System Concepts','RDMS',345)
+select * from view5
+update view5 set Price = '600' where Book_No = 103;
+delete from view5 where Category = 'fiction'
+------------------------------------------------------------------------------
+
+create index firstindex on Book_C(Book_Name)
+---------------------------------------------------------------------
+
+create index secondindex on Issue_C(Member_Id,Book_No)
+------------------------------------------------------------------------
+
+create index secondindex on Member_C(Member_Id)
+----------------------------------------------------------------------------------------------------------------
