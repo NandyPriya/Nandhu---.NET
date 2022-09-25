@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Classdemo1
+{
+    public class Class1
+    {
+        private int _productid;
+        public int Product_id
+        {
+            get
+            {
+                return _productid;
+            }
+            set
+            {
+
+                if ((value.ToString().Length > 4))
+                {
+                    throw new Exception("product id not valid,pls check");
+
+                }
+                else
+                {
+                    _productid = value;
+                }
+            }
+        }
+
+        private string _productname;
+        public string Product_name
+        {
+            get
+            {
+                return _productname;
+            }
+            set
+            {
+
+                if ((string.IsNullOrEmpty(value)) || (value.Length > 80))
+                {
+                    throw new Exception("product name not valid,pls check");
+
+                }
+                else
+                {
+                    _productname = value;
+                }
+            }
+        }
+
+        private double _unitprice;
+        public double Unitprice
+        {
+            get
+            {
+                return _unitprice;
+            }
+            set
+            {
+
+                if ((value.ToString().Length > 8))
+                {
+                    throw new Exception("unitprice not valid");
+
+                }
+                else
+                {
+                    _unitprice = value;
+                }
+            }
+        }
+    }
+}
