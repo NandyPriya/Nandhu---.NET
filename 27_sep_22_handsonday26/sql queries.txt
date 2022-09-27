@@ -1,0 +1,26 @@
+create database InstituteManagementSystem
+use InstituteManagementSystem
+
+create table course
+(
+coursename varchar(20),
+deptid varchar(4),
+duration int
+)
+alter table course
+add courseid int  not null primary key
+
+create table student(
+stuid int primary key,
+name varchar(40),
+crsid int foreign key references course(courseid)
+)
+
+create table Exam
+(examid int primary key,
+crsid int foreign key references course(courseid),
+studid int foreign key references student(stuid),
+marks int
+)
+
+select * from Exam

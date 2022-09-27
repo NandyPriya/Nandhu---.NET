@@ -1,0 +1,258 @@
+using DisconnectedBLL;
+using HelperLibrary;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static int marks1;
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Institute Management System");
+            Console.WriteLine("--------------------------------");
+            EmployeeHelper helper = new EmployeeHelper();
+            StudentHelper helper1 = new StudentHelper();
+            ExamHelper helper2 = new ExamHelper();
+            Console.WriteLine("Menu");
+            Console.WriteLine("-----");
+            Console.WriteLine("1. Add New Course \n 2. Update Course \n 3. Find course \n 4. Show All the Course\n 5.Delete the course\n  6. course count \n 7. Add New Student \n 8.Update student \n 9.Find student\n 10.Show All the student \n 11.Delete student \n 12.student count \n 13.student write exam\n");
+            int userchoice = Convert.ToInt32(Console.ReadLine());
+            Employee_BAL emp = new Employee_BAL();
+            Student_BAL emp1 = new Student_BAL();
+            Exam_BAL emp2 = new Exam_BAL();
+            
+            switch (userchoice)
+            {
+                case 1:
+
+                    Console.WriteLine("Enter coursename");
+                    emp.coursename = Console.ReadLine().Trim();
+
+                    Console.WriteLine("Enter courseid");
+                    emp.courseid = Convert.ToInt32(Console.ReadLine().Trim());
+                    Console.WriteLine("Enter deptid");
+                    emp.deptid = Console.ReadLine().Trim();
+                    Console.WriteLine("enter duration");
+                    emp.duration = Convert.ToInt32(Console.ReadLine().Trim());
+
+                    bool queryStatus = helper.AddNewEmployee(emp);
+                    if (queryStatus)
+                    {
+                        Console.WriteLine("course added successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("enter original emp id");
+                    int empid = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("enter new emp id");
+                    emp.courseid = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Enter coursename");
+                    emp.coursename = Console.ReadLine().Trim();
+
+                    Console.WriteLine("Enter deptid");
+                    emp.deptid = Console.ReadLine().Trim();
+                    Console.WriteLine("enter duration");
+                    emp.duration = Convert.ToInt32(Console.ReadLine().Trim());
+                    queryStatus = helper.EditEmployeeData(empid, emp);
+                    if (queryStatus)
+                    {
+                        Console.WriteLine("course updated successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+
+                    break;
+                case 3:
+                    Console.WriteLine("enter  course id");
+                    emp.courseid = Convert.ToInt32(Console.ReadLine());
+                    Employee_BAL data = helper.LocateEmployee(emp.courseid);
+                    if (data != null)
+                    {
+                        Console.WriteLine("Following are the details");
+                        Console.WriteLine(data.courseid);
+                        Console.WriteLine(data.coursename);
+                        Console.WriteLine(data.deptid);
+                        Console.WriteLine(data.duration);
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid course id");
+                    }
+                    break;
+                case 4:
+                    List<Employee_BAL> emplist = new List<Employee_BAL>();
+                    emplist = helper.EmployeeList();
+                    Console.WriteLine("courseid" + "      " + "coursename" + "         " + "deptid" + "       " + "duration");
+                    foreach (var item in emplist)
+                    {
+                        Console.WriteLine(item.courseid + "       " + item.coursename + "       " + item.deptid + "      " + item.duration );
+                        //Console.WriteLine(item.FirstName);
+                        //Console.WriteLine(item.LastName);
+                        //Console.WriteLine(item.Title);
+                        //Console.WriteLine(item.BirthDate);
+                        Console.WriteLine();
+                    }
+
+
+
+                    break;
+                case 5:
+                    Console.WriteLine("enter  emp id");
+                    emp.courseid= Convert.ToInt32(Console.ReadLine());
+                    queryStatus = helper.RemoveEmployeeData(emp.courseid);
+                    if (queryStatus)
+                    {
+                        Console.WriteLine("course Deleted successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+
+
+                    break;
+                case 6:
+                    int y = helper.RowCountEmployees();
+                    Console.WriteLine("rows count: "+y);
+                    break;
+                case 7:
+                    Console.WriteLine("Enter name of the student");
+                    emp1.name = Console.ReadLine().Trim();
+
+                    Console.WriteLine("Enter courseid");
+                    emp1.crsid = Convert.ToInt32(Console.ReadLine().Trim());
+                    
+                    Console.WriteLine("enter studentid");
+                    emp1.stuid = Convert.ToInt32(Console.ReadLine().Trim());
+
+                    bool queryStatus1 = helper1.AddNewEmployee(emp1);
+                    if (queryStatus1)
+                    {
+                        Console.WriteLine("student added successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+                    break;
+                case 8:
+                    Console.WriteLine("enter original student id");
+                    int empid1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter name of the student");
+                    emp1.name = Console.ReadLine().Trim();
+
+                    Console.WriteLine("Enter courseid");
+                    emp1.crsid = Convert.ToInt32(Console.ReadLine().Trim());
+
+                    Console.WriteLine("enter studentid");
+                    emp1.stuid = Convert.ToInt32(Console.ReadLine().Trim());
+                   queryStatus1 = helper1.EditEmployeeData(empid1, emp1);
+                    if (queryStatus1)
+                    {
+                        Console.WriteLine("student updated successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+                    break;
+                case 9:
+                    Console.WriteLine("enter  student id");
+                    emp1.stuid = Convert.ToInt32(Console.ReadLine());
+                    Student_BAL data1 = helper1.LocateEmployee(emp1.stuid);
+                    if (data1 != null)
+                    {
+                        Console.WriteLine("Following are the details");
+                        Console.WriteLine(data1.stuid);
+                        Console.WriteLine(data1.name);
+                        Console.WriteLine(data1.crsid);
+                       
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid student id");
+                    }
+                    break;
+                case 10:
+                    List<Student_BAL> stdlist = new List<Student_BAL>();
+                    stdlist = helper1.EmployeeList();
+                    Console.WriteLine("studentid" + "      " + "nameof the student" + "                  " + "courseid" );
+                    foreach (var item in stdlist)
+                    {
+                        Console.WriteLine(item.stuid + "                 " + item.name + "                        " + item.crsid);
+                     
+                        Console.WriteLine();
+                    }
+
+                    break;
+                case 11:
+                    Console.WriteLine("enter  student id");
+                    emp1.stuid = Convert.ToInt32(Console.ReadLine());
+                    queryStatus1 = helper1.RemoveEmployeeData(emp1.stuid);
+                    if (queryStatus1)
+                    {
+                        Console.WriteLine("student Deleted successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+                    break;
+                case 12:
+                    int y1 = helper1.RowCountEmployees();
+                    Console.WriteLine("student rows count: " + y1);
+                    break;
+                case 13:
+                    Console.WriteLine("Enter examid of the student");
+                    emp2.examid = Convert.ToInt32(Console.ReadLine().Trim());
+
+                    Console.WriteLine("Enter courseid of the student");
+                    emp2.crsid = Convert.ToInt32(Console.ReadLine().Trim());
+
+                    Console.WriteLine("enter studentid");
+                    emp2.studid = Convert.ToInt32(Console.ReadLine().Trim());
+                    Program.marks1 = 0;
+                    for (int i = 1; i <= 10; i++)
+                    {
+                        Console.WriteLine("enter mark for question"+ " "+i);
+                        int m1 = Convert.ToInt32(Console.ReadLine().Trim());
+                       
+                        if (m1 >= 55)
+                        {
+                            Program.marks1++;
+                        }
+                    }
+                    
+                    emp2.marks=Program.marks1;  
+                    queryStatus1 = helper2.AddNewEmployee(emp2);
+                    if (queryStatus1)
+                    {
+                        Console.WriteLine("student added successfully.....");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Some error occured...");
+                    }
+                    break;
+                default:
+                    break;
+            }
+            Console.ReadKey();
+        }
+    }
+}

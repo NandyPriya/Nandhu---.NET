@@ -1,0 +1,52 @@
+using Disconnected_DAL;
+using DisconnectedBLL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HelperLibrary
+{
+    public class StudentHelper
+    {
+        StudentDAL dal = null;
+        public StudentHelper()
+        {
+            dal = new StudentDAL();
+        }
+
+
+        public int RowCountEmployees()
+        {
+            return dal.RowCountEmployees();
+
+        }
+        public bool AddNewEmployee(Student_BAL employee)
+        {
+            return dal.InsertEmployee(employee);
+        }
+        public Student_BAL LocateEmployee(int empid)
+        {
+            return dal.FindEmployee(empid);
+        }
+
+        public List<Student_BAL> EmployeeList()
+        {
+            return dal.ShowAllEmps();
+        }
+
+        public bool RemoveEmployeeData(int empid)
+        {
+            return dal.DeleteEmployee(empid);
+        }
+
+
+
+        public bool EditEmployeeData(int empid, Student_BAL employee)
+        {
+            return dal.UpdateEmployee(empid, employee);
+        }
+
+    }
+}
