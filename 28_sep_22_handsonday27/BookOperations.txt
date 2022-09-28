@@ -1,0 +1,72 @@
+using LMSMember;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LMSBook
+{
+    public class BookOperations
+    {
+       
+
+
+        //public void DeleteCustomer(int Bookno)
+        //{
+
+        //    libraryEntities context = new libraryEntities();
+        //    context.Proceduredelete(Bookno);
+        //    context.SaveChanges();
+        //}
+
+        public void UpdateCustomer(LMSBOOK1 bal)
+        {
+            libraryEntities context = new libraryEntities();
+            List<Book> customers = context.Books.ToList();
+            Book obj = customers.Find(cust => cust.Book_No == bal.Bookno);
+            obj.Book_Name = bal.Bookname;
+            obj.Author = bal.Author;
+            obj.Cost = bal.Cost;
+            obj.Category = bal.Category;
+            context.SaveChanges();
+
+        }
+
+        public void Insertcustomer(LMSBOOK1 bal)
+        {
+            libraryEntities context = new libraryEntities();
+            Book c = new Book();
+            c.Book_No = bal.Bookno;
+            c.Book_Name = bal.Bookname;
+            c.Author = bal.Author;
+            c.Cost = bal.Cost;
+            c.Category = bal.Category;
+            context.Books.Add(c);
+            context.SaveChanges();
+
+        }
+
+
+
+        public List<LMSBOOK1> GetCustomers()
+        {
+            libraryEntities context = new libraryEntities();
+
+            List<Book> clist = context.Books.ToList();
+            List<LMSBOOK1> cblist = new List<LMSBOOK1>();
+            foreach (var item in clist)
+            {
+                cblist.Add(new LMSBOOK1 { Bookno = item.Book_No, Bookname = item.Book_Name, Author = item.Author,Cost= (int)item.Cost,Category=item.Category });
+
+
+
+            }
+            return cblist;
+
+
+
+
+        }
+    }
+}

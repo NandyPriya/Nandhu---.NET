@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LMSBook
+{
+    public class LMSMember1
+    {
+        public int Memberid { get; set; }
+        public string Membername { get; set; }
+
+        public DateTime Accopendate { get; set; }
+        public int Maxbooksallowed { get; set; }
+        public int Penaltyamount { get; set; }
+
+    }
+}

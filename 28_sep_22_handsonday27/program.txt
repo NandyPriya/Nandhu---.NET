@@ -1,0 +1,166 @@
+using LMSBook;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Library Management System");
+            Console.WriteLine("1.insert book \n 2.update book\n 3.insert member\n 4.update member \n");
+            int h = Convert.ToInt32(Console.ReadLine());
+            BookOperations co = new BookOperations();
+            List<LMSBOOK1> customers = co.GetCustomers();
+            LMSBOOK1 bal = new LMSBOOK1();
+
+            MemberOpertions co1 = new MemberOpertions();
+            //List<LMSMember1> customers1 = co1.GetCustomers();
+            LMSMember1 bal1 = new LMSMember1();
+
+            switch (h)
+            {
+                case 1:
+
+
+                    foreach (var item in customers)
+                    {
+                        Console.WriteLine(item.Bookno + "    " + item.Bookname + "      " + item.Author + "   " + item.Cost + "  " + item.Category);
+                    }
+
+                    Console.WriteLine("--------------------------");
+
+                    Console.WriteLine("Add Book");
+                    Console.WriteLine("enter bookno");
+
+                    bal.Bookno = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter bookname");
+                    bal.Bookname = Console.ReadLine();
+
+                    Console.WriteLine("enter author");
+                    bal.Author = Console.ReadLine();
+                    Console.WriteLine("enter cost");
+
+                    bal.Cost = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter category");
+
+                    bal.Category = Console.ReadLine();
+                    co.Insertcustomer(bal);
+                    Console.WriteLine("book inserted successfully...");
+                    Console.WriteLine("---------------");
+                    customers = co.GetCustomers();
+
+                    foreach (var item in customers)
+                    {
+                        Console.WriteLine(item.Bookno + " " + item.Bookname + item.Author + item.Cost + item.Category);
+                    }
+                    Console.WriteLine("=---------------------------");
+
+                    break;
+                case 2:
+                    Console.WriteLine("--------------------------");
+                    //LMSBOOK1 bal = new LMSBOOK1();
+                    Console.WriteLine("Add Book");
+                    Console.WriteLine("enter bookno");
+
+                    bal.Bookno = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter bookname");
+                    bal.Bookname = Console.ReadLine();
+
+                    Console.WriteLine("enter author");
+                    bal.Author = Console.ReadLine();
+                    Console.WriteLine("enter cost");
+
+                    bal.Cost = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter category");
+
+                    bal.Category = Console.ReadLine();
+                    co.UpdateCustomer(bal);
+                    Console.WriteLine("book updated successfully...");
+                    Console.WriteLine("---------------");
+                    customers = co.GetCustomers();
+
+                    foreach (var item in customers)
+                    {
+                        Console.WriteLine(item.Bookno + " " + item.Bookname + item.Author + item.Cost + item.Category);
+                    }
+                    Console.WriteLine("=---------------------------");
+                    break;
+                case 3:
+                    //foreach (var item in customers1)
+                    //{
+                    //    Console.WriteLine(item.Memberid + "    " + item.Membername + "      " + item.Accopendate + "   " + item.Maxbooksallowed + "  " + item.Penaltyamount);
+                    //}
+
+                    Console.WriteLine("--------------------------");
+
+                    Console.WriteLine("Add member");
+                    Console.WriteLine("enter memberid");
+
+                    bal1.Memberid = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter membername");
+                    bal1.Membername = Console.ReadLine();
+
+                    Console.WriteLine("enter accopendate");
+                    bal1.Accopendate = Convert.ToDateTime(Console.ReadLine());
+                    Console.WriteLine("enter penaltyamt");
+
+                    bal1.Penaltyamount = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter maxbooksallowed");
+
+                    bal1.Maxbooksallowed = Convert.ToInt32(Console.ReadLine());
+                    co1.Insertcustomer(bal1);
+                    Console.WriteLine("member inserted successfully...");
+                    Console.WriteLine("---------------");
+                    //customers1 = co1.GetCustomers1();
+
+                    //foreach (var item in customers1)
+                    //{
+                    //    Console.WriteLine(item.Memberid + "    " + item.Membername + "      " + item.Accopendate + "   " + item.Maxbooksallowed + "  " + item.Penaltyamount);
+                    //}
+                    Console.WriteLine("=---------------------------");
+                    break;
+                case 4:
+                    //foreach (var item in customers1)
+                    //{
+                    //    Console.WriteLine(item.Memberid + "    " + item.Membername + "      " + item.Accopendate + "   " + item.Maxbooksallowed + "  " + item.Penaltyamount);
+                    //}
+
+                    Console.WriteLine("--------------------------");
+
+                    Console.WriteLine("Add member");
+                    Console.WriteLine("enter memberid");
+
+                    bal1.Memberid = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter membername");
+                    bal1.Membername = Console.ReadLine();
+
+                    Console.WriteLine("enter accopendate");
+                    bal1.Accopendate = Convert.ToDateTime(Console.ReadLine());
+                    Console.WriteLine("enter penaltyamt");
+
+                    bal1.Penaltyamount = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("enter maxbooksallowed");
+
+                    bal1.Maxbooksallowed = Convert.ToInt32(Console.ReadLine());
+                    co1.UpdateCustomer(bal1);
+                    Console.WriteLine("member updated successfully...");
+                    Console.WriteLine("---------------");
+                    //customers1 = co1.GetCustomers1();
+
+                    //foreach (var item in customers1)
+                    //{
+                    //    Console.WriteLine(item.Memberid + "    " + item.Membername + "      " + item.Accopendate + "   " + item.Maxbooksallowed + "  " + item.Penaltyamount);
+                    //}
+                    Console.WriteLine("=---------------------------");
+                    break;
+                default: break;
+            }
+            Console.ReadLine();
+        }
+    }
+}

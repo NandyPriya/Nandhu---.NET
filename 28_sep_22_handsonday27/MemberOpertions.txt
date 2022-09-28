@@ -1,0 +1,61 @@
+using LMSMember;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LMSBook
+{
+    public class MemberOpertions
+    {
+        public void UpdateCustomer(LMSMember1 bal)
+        {
+            libraryEntities context = new libraryEntities();
+            List<Member> customers = context.Members.ToList();
+            Member obj = customers.Find(cust => cust.Member_Id == bal.Memberid);
+            obj.Member_Name = bal.Membername;
+            obj.Acc_Open_Date = bal.Accopendate;
+            obj.Max_Books_Allowed = bal.Maxbooksallowed;
+            obj.Penalty_Amount = bal.Penaltyamount;
+            context.SaveChanges();
+
+        }
+
+        public void Insertcustomer(LMSMember1 bal)
+        {
+            libraryEntities context = new libraryEntities();
+            Member c = new Member();
+            c.Member_Id = bal.Memberid;
+            c.Member_Name = bal.Membername;
+            c.Acc_Open_Date = bal.Accopendate;
+            c.Max_Books_Allowed = bal.Maxbooksallowed;
+            c.Penalty_Amount = bal.Penaltyamount;
+            context.Members.Add(c);
+            context.SaveChanges();
+
+        }
+
+
+
+        public List<LMSMember1> GetCustomers()
+        {
+            libraryEntities context = new libraryEntities();
+
+            List<Member> clist = context.Members.ToList();
+            List<LMSMember1> cblist = new List<LMSMember1>();
+            foreach (var item in clist)
+            {
+                cblist.Add(new LMSMember1 { Memberid = item.Member_Id, Membername = item.Member_Name, Accopendate = (DateTime)item.Acc_Open_Date, Maxbooksallowed = (int)item.Max_Books_Allowed, Penaltyamount = (int)item.Penalty_Amount });
+
+
+
+            }
+            return cblist;
+
+
+
+
+        }
+    }
+}
