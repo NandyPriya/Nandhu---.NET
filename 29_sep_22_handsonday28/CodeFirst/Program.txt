@@ -1,0 +1,29 @@
+using BankCodeFirstDAL;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankCodeFirstDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MyContext context = new MyContext();
+            context.BorrowerTable.Add(new Borrower { Borrowerid=1,Borrowername="Nandhinipriya",City="vellore",State="TamilNadu",Country="India",Street="Ramarkovilstreet",Companyname="xxxx",Jobname=".net developer" });
+            context.BorrowerTable.Add(new Borrower { Borrowerid = 2, Borrowername = "yashwanth", City = "vellore", State = "TamilNadu", Country = "India", Street = "xxxxx", Companyname = "oracle", Jobname = ".java developer" });
+            context.BorrowerTable.Add(new Borrower { Borrowerid = 3, Borrowername = "Shibiya", City = "Salem", State = "TamilNadu", Country = "India", Street = "bajanaikovilstreet", Companyname = "cgi", Jobname = ".net developer" });
+            context.SaveChanges();
+            Console.WriteLine("add borrower successfully");
+            context.LoanTable.Add(new Loan { LoanID=1,LoanType="education",Amt=100000,Duration="1 year",RateofInterest=0.08});
+            context.LoanTable.Add(new Loan { LoanID = 2, LoanType = "education", Amt = 150000, Duration = "1 year 6 months", RateofInterest = 0.06 });
+            context.SaveChanges();
+            Console.WriteLine("add loan successfully");
+            Console.Read();
+
+        }
+    }
+}

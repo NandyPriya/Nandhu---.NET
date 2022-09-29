@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankCodeFirstDAL
+{
+    public class Borrower
+    {
+        [Key]
+        [Required]
+        public int Borrowerid { get; set; }
+        [MaxLength(20, ErrorMessage = "Not allowed above 20 chars")]
+        [MinLength(2, ErrorMessage = "Not allowed below 2 chars")]
+        public string Borrowername { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+        public string Street
+        { get; set; }
+
+        public string Companyname { get; set; }
+
+        public string Jobname { get; set; }
+
+    }
+
+    public class Loan
+    {
+        [Key]
+        [Required]
+        public int LoanID { get; set; }
+        [MaxLength(20, ErrorMessage = "Not allowed above 20 chars")]
+        [MinLength(2, ErrorMessage = "Not allowed below 2 chars")]
+        public string LoanType { get; set; }
+        public int Amt { get; set; }
+        public string Duration { get; set; }
+        public Double RateofInterest { get; set; }
+
+        //[ForeignKey("Borrowerid")]
+        //public virtual Borrower BorrowerDetails { get; set; }
+    }
+    public class MyContext : DbContext
+    {
+        public MyContext() : base("MyContext")
+        {
+            //createdatabase if not exists
+            //drop create always
+            //drop create if model changes
+
+            Database.SetInitializer<MyContext>(new DropCreateDatabaseAlways<MyContext>());
+        }
+
+        public virtual DbSet<Borrower> BorrowerTable { get; set; }
+        public virtual DbSet<Loan> LoanTable { get; set; }
+
+    }
+}
