@@ -1,0 +1,91 @@
+using ClassLibrary1;
+using ClassLibrary3;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Library Management System");
+            Console.WriteLine("--------------------------------");
+            string userid, password;
+            Console.WriteLine("eneter userid");
+            userid = Console.ReadLine();
+            Console.WriteLine("enter password");
+            password = Console.ReadLine();
+            if(userid == "in5678" && password == "in5678" )
+            {
+                Console.WriteLine("login successfull");
+                Helper helper = new Helper();
+                Console.WriteLine("Menu");
+                Console.WriteLine("-----");
+                Console.WriteLine("1. Add New Book \n 2. Update Book \n 3. Find Book \n 4. Show All \n 5.Delete \n  6. Book count \n 7. Exit ");
+                int userchoice = Convert.ToInt32(Console.ReadLine());
+                BAL emp = new BAL();
+                switch (userchoice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter bookno");
+                        emp.Book_no = Convert.ToInt32(Console.ReadLine().Trim());
+
+                        Console.WriteLine("Enter bookname");
+                        emp.Book_name = Console.ReadLine();
+                        Console.WriteLine("Enter author");
+                        emp.Author = Console.ReadLine();
+                        Console.WriteLine("Enter costofbook");
+                        emp.Cost = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("enter category");
+                        emp.Category = Console.ReadLine().Trim();
+                        // BooHelper helper = new Book_Helper();
+                        bool queryStatus = helper.addbook(emp);
+                        if (queryStatus)
+                        {
+                            Console.WriteLine("book added successfully.....");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Some error occured...");
+                        }
+                        break;
+                    case 2:
+
+                        Console.WriteLine("Enter memberid");
+                        emp.Memberid = Convert.ToInt32(Console.ReadLine().Trim());
+
+                        Console.WriteLine("Enter membername");
+                        emp.Membername = Console.ReadLine();
+                        Console.WriteLine("Enter accopendate");
+                        emp.Accopen = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Enter maxbook allowed per person");
+                        emp.Maxbooks = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("enter penaltyamt");
+                        emp.Penaltyamt = Convert.ToInt32(Console.ReadLine().Trim());
+                        // BooHelper helper = new Book_Helper();
+
+                        queryStatus = helper.editbook(emp);
+                        if (queryStatus)
+                        {
+                            Console.WriteLine("Employee updated successfully.....");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Some error occured...");
+                        }
+                        break;
+                }
+           
+                   
+            }
+            else
+            {
+                Console.WriteLine("pls check!!!!!userid and password");
+            }
+        }
+    }
+}

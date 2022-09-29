@@ -1,0 +1,34 @@
+using ClassLibrary1;
+using ClassLibrary2;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrary3
+{
+    public class Helper
+    {
+        DAL dl = null;
+        public Helper()
+        {
+            dl = new DAL();
+        }
+        public bool addbook(BAL book1)
+        {
+            bool status = dl.InsertBook(book1);
+            Console.WriteLine(status);
+            return status;
+            //return 
+        }
+        public bool editbook(BAL book1)
+        {
+            bool status = dl.UpdateBook(book1);
+            Console.WriteLine(status);
+            return status;
+            //return 
+        }
+
+    }
+}

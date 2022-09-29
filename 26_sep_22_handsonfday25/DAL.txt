@@ -1,0 +1,66 @@
+using ClassLibrary1;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Configuration;
+
+namespace ClassLibrary2
+{
+    public class DAL
+    {
+        public bool InsertBook(BAL book1)
+        {
+
+            SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["librarydb"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("insert into book(book_no,book_name,author,cost,category) values(@book_no,@book_name,@author,@cost,@category)", cn);
+            cmd.Parameters.AddWithValue("@book_no", book1.Book_no);
+            cmd.Parameters.AddWithValue("@book_name", book1.Book_name);
+            cmd.Parameters.AddWithValue("@author", book1.Author);
+            cmd.Parameters.AddWithValue("@cost", book1.Cost);
+            cmd.Parameters.AddWithValue("@category", book1.Category);
+            cn.Open();
+            int i = cmd.ExecuteNonQuery();
+            bool status = false;
+            if (i == 1)
+            {
+                status = true;
+            }
+            cn.Close();
+            cn.Dispose();
+            Console.WriteLine(status);
+            return status;
+
+        }
+    
+    public bool UpdateBook(BAL book1)
+    {
+
+        SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["librarydb"].ConnectionString);
+        SqlCommand cmdUpdate = new SqlCommand("[dbo].[Procedureupdate]", cn);
+
+        cmdUpdate.CommandType = System.Data.CommandType.StoredProcedure;
+        //SqlCommand cmd = new SqlCommand("insert into book(book_no,book_name,author,cost,category) values(@book_no,@book_name,@author,@cost,@category)", cn);
+        cmdUpdate.Parameters.AddWithValue("@p_memberid", book1.Memberid);
+        cmdUpdate.Parameters.AddWithValue("@p_membername", book1.Membername);
+        cmdUpdate.Parameters.AddWithValue("@p_accopendate", book1.Accopen);
+        cmdUpdate.Parameters.AddWithValue("@p_maxbookallowed", book1.Maxbooks);
+        cmdUpdate.Parameters.AddWithValue("@p_penaltyamt", book1.Penaltyamt);
+        cn.Open();
+        int i = cmdUpdate.ExecuteNonQuery();
+        bool status = false;
+        if (i == 1)
+        {
+            status = true;
+        }
+        cn.Close();
+        cn.Dispose();
+        Console.WriteLine(status);
+        return status;
+
+    }
+}
+}
+
