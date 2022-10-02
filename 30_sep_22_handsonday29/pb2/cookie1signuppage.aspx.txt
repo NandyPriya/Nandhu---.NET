@@ -1,0 +1,38 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Cookie1signuppage.aspx.cs" Inherits="WebApplication2.Cookie1signuppage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            
+            <p></p>
+          
+            <p> Customers Signup Page</p>Personal Details<br /><br />
+            <asp:Label runat="server" Text="FirstName:" ID="lblfnname"></asp:Label>   <asp:TextBox runat="server" ID="txtftname"></asp:TextBox><br /><br />
+           <asp:Label runat="server" Text="LastName:" ID="lblltname"></asp:Label>   <asp:TextBox runat="server" ID="txtltname"></asp:TextBox><br /><br />
+
+             <asp:Label runat="server" Text="DOB:" ID="lbldob"></asp:Label><br /> <asp:Calendar ID="lblcalendar" runat="server" OnSelectionChanged="lblcalendar_SelectionChanged"></asp:Calendar><br />
+            <asp:TextBox runat="server" ID="txtcalendar"></asp:TextBox><br /><br />
+            <asp:Label runat="server" Text="City:" ID="lbcity"></asp:Label><asp:TextBox runat="server" ID="txtcity"></asp:TextBox><br /><br />
+             <asp:Label runat="server" Text="State:" ID="lbstate"></asp:Label><asp:TextBox runat="server" ID="txtstate"></asp:TextBox><br /><br />
+            <asp:Button ID="submitbtn" runat="server" Text="Submit" OnClick="submitbtn_Click" /><br /><br />
+            <asp:Label ID="Label2" runat="server"></asp:Label><br />
+            <p>Welcome Page</p> 
+            <asp:Button ID="Button1" runat="server" Text="Welcome" OnClick="Button1_Click" />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
+    
+            </div>
+        
+        
+        
+    </form>
+</body>
+
+
+</html>

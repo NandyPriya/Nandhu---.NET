@@ -1,0 +1,28 @@
+<%@ Page Language="C#"   CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication1.WebForm2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body id="lbluserid">
+    <form id="form1" runat="server">
+        <div>
+             <asp:Label runat="server" Text="Userid" ID="Label1"></asp:Label> <asp:TextBox runat="server" ID="TextBox1" TextMode="SingleLine"></asp:TextBox><br /><br />
+            <asp:Label runat="server" Text="Password" ID="lblpassword"></asp:Label> <asp:TextBox runat="server" ID="txtpwd" TextMode="Password"></asp:TextBox><br /><br />
+            <asp:Button runat="server" Text="Submit" OnClick="Unnamed1_Click"></asp:Button><br />
+            <asp:Label runat="server" Text="Label" ID="lblans"></asp:Label>
+             </div>
+    </form>
+       
+       
+</body>
+
+
+
+           
+
+
+
+</html>
