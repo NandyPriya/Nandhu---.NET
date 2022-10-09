@@ -1,0 +1,3 @@
+<div>
+    <p> Library Open from <time>10:00 AM </time> to <time>05:00 PM</time> every weekday.</p>
+</div>

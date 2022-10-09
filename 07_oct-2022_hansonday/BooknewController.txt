@@ -1,0 +1,126 @@
+using ClassLibrary1;
+using ClassLibrary3;
+using MVCDemo1.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVCDemo1.Controllers
+{
+    public class BooknewController : Controller
+    {
+        // GET: Booknew
+
+        Helper helper = null;
+        public BooknewController()
+        {
+            helper = new Helper();
+        }
+        public ActionResult Index()
+        {
+            var emplist = helper.ShowBookList();
+            List<BookModel> modelsList = new List<BookModel>();
+            foreach (var item in emplist)
+            {
+                modelsList.Add(new BookModel { Book_no = item.Book_no, Book_name = item.Book_name, Category = item.Category, Author = item.Author,Cost = item.Cost });
+            }
+
+            return View(modelsList);
+            
+        }
+        public PartialViewResult _Greet()
+        {
+            return PartialView();
+        }
+
+        // GET: Booknew/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Booknew/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Booknew/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                BAL bal = new BAL();
+                bal.Book_no = Convert.ToInt32(Request["Book_no"]);
+                bal.Book_name = Request["Book_name"].ToString();
+                bal.Cost = Convert.ToInt32(Request["Cost"]);
+                bal.Category = Request["Category"].ToString();
+                bal.Author = Request["Author"].ToString();
+                // TODO: Add insert logic here
+               bool ans = helper.addbook(bal);
+                if(ans)
+                {
+                   return 
+                        RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                ViewBag.exMsg = ex.Message;
+                return View();
+            }
+        }
+
+        // GET: Booknew/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Booknew/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Booknew/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Booknew/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}
