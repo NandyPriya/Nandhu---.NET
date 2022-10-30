@@ -1,0 +1,17 @@
+Steps:
+
+1)first i create a web core application(mvc).
+2)i created a logincontroller,inthat i add login action ,get the username and password if it correct it goes to dashboard page or otherwise it says error message.
+3)i created a model(login class)in that 2 properties are there,(i.e.,)username and password.
+4)i created a view login and added a class(login)then create template are used.
+5)in index.cshtml,i created a link(logout),when you click redirects to logout action and returns a view.
+6)i added logout view(Home Controller),in that template(Razor View Empty).
+7)in program.cs,edit the pattern(first goes to login controller then goes to login action).
+8) i run in both platflorm(IIS Server and Docker Desktop)
+in Docker Desktop
+***** 
+CMD PROMPT
+****
+to build the image =========>docker build -t nandypriya/bankdemo:latest .
+to create a container ==========>docker run -p 9091:80  nandypriya/bankdemo
+

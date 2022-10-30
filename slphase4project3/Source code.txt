@@ -1,0 +1,174 @@
+program.cs
+****************
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Login}/{action=Login}/{id?}");
+
+app.Run();
+*************************
+Home Controller:
+***************************
+using BankDemo.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+
+namespace BankDemo.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Logout()
+        {
+            return View();
+        }
+    }
+}
+*********************
+LoginController
+************************
+using Microsoft.AspNetCore.Mvc;
+
+namespace BankDemo.Controllers
+{
+    public class LoginController : Controller
+    {
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(IFormCollection c)
+        {
+            string k = c["username"].ToString();
+            string p = c["password"].ToString();
+            if (k == "nandhu" && p == "N@ndhu")
+            {
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "" });
+            }
+            else
+            {
+                ViewBag.Message1 = "Invalid username/password";
+                return View();
+            }
+        }
+
+    }
+}
+
+*****************
+Login.cshtml
+*****************
+@model BankDemo.Models.LoginClass
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<h4>LoginClass</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <br />
+
+                <p style="color:darkviolet">@ViewBag.Message1</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+************************
+Logout.cshtml
+***************************
+
+@{
+    ViewData["Title"] = "Logout";
+}
+
+<font  color="violet">Logout Successfully!!!!!!!!!!!!!!!!!!!!</font>
+
+***************************
+index.cshtml
+***************************
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-action="Logout" style="margin-top:100px;margin-left:1000px">Logout</a>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<html>
+    <body background = "bank1.jpg">
+
+    </body>
+</html>
+*********************************
