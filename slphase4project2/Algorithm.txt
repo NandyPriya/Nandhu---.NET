@@ -1,0 +1,9 @@
+steps:
+
+1) first i created class library SchoolClass in that i created four classes(student,subject,marks,schoolclass)
+2)in schoolclass 2 properties are there(classname,noofstudents)
+3)in marks class 3 properties are there(marks,subjectid,studentid)
+4)in student class 5 properties are there(studentid,stuname,class,email,address) and 2 functions are there to test the testcases.
+5)in subject class 3 properties are there(subjectid,subname,class)
+6)next i created class libaray SchoolClassService in that i added 4 test cases(if marks > 50 and studentid >0)then true or it gives false.
+7)another testcase (if studname not null)then true or it gives false.
