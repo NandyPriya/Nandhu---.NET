@@ -1,0 +1,12 @@
+steps
+**********
+1)first you create a sql database in azure port,for that you need Resource Group,SQL server.
+2)for creating SQL Server u need servername give username and password.
+3)then you open ssms 2019,enter servername and give sql server authentication,then enter username and password.
+4)after that click Connect button
+5)after open visual studio 2022,select webform project->then right click the project->publish->azure->azure app service(windows)->click create button(then generate appservice)->click close->click publish(then redirects to chrome).
+6)before run the project you need to add data connection in server explorer,then connect sql database of azure after test connection is succeded,then right click the database=>click properties(copy the connection string and paste in the program).
+7)after run the program you got some error (i.e.,)ip address then go to azure portal ,click the sql database ->go to setup firewall->click add client ipV4 Address->in startvp address and stopvp address paste the ipaddress that is in the error page of chrome browser.
+8)after doing these 2 steps then again build the project and publish the project also,then it redirects through chrome page 
+enter sited url+/webform2.aspx
+9)finally program is running successfully!!!!!!!!!! 
