@@ -1,0 +1,9 @@
+Steps:
+***************
+1)first i created Azure sql Database,in that two tables are created(userinfo,custlog info)
+2)in vs2022, i created two class libraries for nunit testing(DAL,DALTest)for that u need to install nunit3 nunit packages are installed in nuget package manager,add dependencies and references in DALTest of DAL
+3)in DAL class libary using database first approach entity framework so that code is auto generated(userinfo.cs,custloginfo.cs)
+4)in DALTest Class Library , add the code for testing the testcases.
+5)then i created asp.net web application(.NET Framework)[MVC] in that i added log controller and login action to create the login page then i created Logcontroller and complaint action to create the complaint log page.i created for these two actionsused template(create).
+6)then i deploy the application through docker.
+7)i go to jenkins add the project and paste the git repo link and add msbuild path finally build the project is successfull.
