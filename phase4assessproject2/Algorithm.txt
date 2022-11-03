@@ -1,0 +1,10 @@
+Steps
+***********
+1)first i created the mvc core project in vs 2022
+2)then i created PizzaController,in that i created index action,addtocart action,checkout action.
+3)then i created three classes(order,pizzadetails,info)
+4)in order class has prodid,prodname,quantity,total properties are there
+5)in pizzadetails class has id,name,price and rating properties are there
+6)for index action and checkout action has list template is used and addtocart action has details action are used.
+7)i build the project through jenkins as well as in Azure through visual studio 2022
+8)in index page u see the what are the pizzas are availabel then click the addtocart link then enter the quantity then click the submit button it goes to checkout page and product is added in the cart,then click the goto index page it goes to first page.
