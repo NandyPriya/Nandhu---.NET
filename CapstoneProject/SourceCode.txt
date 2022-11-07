@@ -1,0 +1,667 @@
+DAL CLASS LIBRARY
+*******************************
+*******************************
+ADMININFO.CS
+*******************************
+namespace DAl
+{
+    public class AdminInfo
+    {
+        [Key]
+        [Required]
+
+        public string EmailId { get; set; }
+
+        public string Password { get; set; }
+
+    }
+    public class EmpInfo
+    {
+        [Key]
+        [Required]
+        public string EmailId { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime DateOfJoining { get; set; }
+        public int PassCode { get; set; }
+
+    }
+    public class BlogInfo
+    {
+        [Key]
+        [Required]
+        public int BlogId { get; set; }
+        public string Title { get; set; }
+        public string Subject { get; set; }
+        public DateTime DateOfCreation { get; set; }
+        public string BlogUrl { get; set; }
+        public string EmpEmailId { get; set; }
+
+    }
+    public class MyContext : DbContext
+    {
+        public virtual DbSet<AdminInfo> AdminInfoTable { get; set; }
+        public virtual DbSet<EmpInfo> EmpInfoTable { get; set; }
+
+        public virtual DbSet<BlogInfo> BlogInfoTable { get; set; }
+
+
+    }
+    public class AdminInfoDbInitializer : DropCreateDatabaseIfModelChanges<MyContext>
+    {
+        protected override void Seed(MyContext context)
+        {
+            var depts = new List<AdminInfo> {
+                new AdminInfo { EmailId = "nandhini@gmail.com", Password = "N@ndhu"},
+                new AdminInfo { EmailId = "narmatha@gmail.com", Password = "N@rmadha" },
+                new AdminInfo { EmailId = "shibiya@gmail.com", Password = "Shibiy@" }
+
+            };
+            depts.ForEach(s => context.AdminInfoTable.Add(s));
+            context.SaveChanges();
+        }
+    }
+
+}
+***********************************************************************************************
+DAL.CS
+**************************
+namespace DAl
+{
+    public class DAL
+    {
+
+        MyContext c1 = null;
+        public DAL()
+        {
+            c1 = new MyContext();
+        }
+        public bool InsertEmployee(EmpInfo b1)
+        {
+            try
+            {
+                c1.EmpInfoTable.Add(b1);
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+
+        }
+        public bool DeleteEmp(string b1)
+        {
+            try
+            {
+
+                EmpInfo k = c1.EmpInfoTable.Find(b1);
+                c1.EmpInfoTable.Remove(k);
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+        public bool UpdateEmployee(string id, EmpInfo b1)
+        {
+            try
+            {
+                EmpInfo k = c1.EmpInfoTable.Find(id);
+                k.EmailId = b1.EmailId;
+                k.Name = b1.Name;
+                k.DateOfJoining = b1.DateOfJoining;
+                k.PassCode = b1.PassCode;
+
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+        }
+
+        public List<EmpInfo> EmployeeList()
+        {
+
+            return c1.EmpInfoTable.ToList();
+        }
+
+        public EmpInfo FindEmployee(string id)
+        {
+            EmpInfo k = c1.EmpInfoTable.Find(id);
+            return k;
+        }
+        public bool InsertBlog(BlogInfo b11)
+        {
+            try
+            {
+                c1.BlogInfoTable.Add(b11);
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+
+        }
+        public bool UpdateBlog(int id, BlogInfo b11)
+        {
+            try
+            {
+                BlogInfo k1 = c1.BlogInfoTable.Find(id);
+                //var d = c1.BlogInfoTable.ToList();
+                //BlogInfo k1 = d.Find(x => x.BlogId == id);
+                
+                                k1.BlogId = Convert.ToInt32(b11.BlogId);
+                k1.Title = b11.Title;
+                k1.Subject = b11.Subject;
+                k1.DateOfCreation = b11.DateOfCreation;
+                k1.BlogUrl = b11.BlogUrl;
+                k1.EmpEmailId = b11.EmpEmailId;
+
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                return false;
+            }
+        }
+        public bool DeleteBlog(int b11)
+        {
+            try
+            {
+
+                BlogInfo k1 = c1.BlogInfoTable.Find(b11);
+                c1.BlogInfoTable.Remove(k1);
+                c1.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+
+        }
+        public List<BlogInfo> BlogList()
+        {
+
+            return c1.BlogInfoTable.ToList();
+        }
+    }
+}
+***************************************************
+WEBAPI*********************
+******************************
+**********************************
+BlogController
+****************************
+namespace BlogWebApi.Controllers
+{
+    public class BlogController : ApiController
+    {
+        DAL be = null;
+        public BlogController()
+        {
+            be = new DAL();
+        }
+        [Route("AddBlog")]
+
+        public HttpResponseMessage Post([FromBody] Blog blog)
+        {
+            BlogInfo hy1 = new BlogInfo();
+            hy1.BlogId = blog.BlogId;
+            hy1.Title = blog.Title;
+            hy1.Subject = blog.Subject;
+            hy1.DateOfCreation = blog.DateOfCreation;
+            hy1.BlogUrl = blog.BlogUrl;
+            hy1.EmpEmailId = blog.EmpEmailId;
+            bool ans = be.InsertBlog(hy1);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+
+
+
+        }
+        [Route("Updateblog/{id}")]
+        public HttpResponseMessage Put(int id, [FromBody]Blog blog)
+        {
+            BlogInfo hy1 = new BlogInfo();
+            hy1.BlogId = Convert.ToInt32(blog.BlogId);
+            hy1.Title = blog.Title;
+            hy1.Subject = blog.Subject;
+            hy1.DateOfCreation = blog.DateOfCreation;
+            hy1.BlogUrl = blog.BlogUrl;
+            hy1.EmpEmailId = blog.EmpEmailId;
+
+
+            bool ans = be.UpdateBlog(id, hy1);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+        }
+
+        [Route("DeleteBlog/{id}")]
+
+        public HttpResponseMessage Delete(int id)
+        {
+            bool ans = be.DeleteBlog(id);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+        }
+        [Route("GetallBlog")]
+        public List<Blog> Get()
+        {
+            List<Blog> profiles = new List<Blog>();
+            List<BlogInfo> empbal = new List<BlogInfo>();
+            empbal = be.BlogList();
+            foreach (var item in empbal)
+            {
+                //Employees emp = new Employees();
+                profiles.Add(new Blog { BlogId = item.BlogId, Title = item.Title, Subject = item.Subject, DateOfCreation = item.DateOfCreation, BlogUrl = item.BlogUrl, EmpEmailId = item.EmpEmailId } );
+            }
+
+            return profiles;
+        }
+    }
+}
+***********************************************
+EmpController
+***********************************
+namespace BlogWebApi.Controllers
+{
+    public class EmpController : ApiController
+    {
+        DAL be = null;
+        public EmpController()
+        {
+            be = new DAL();
+        }
+
+       
+
+        [Route("AddEmps")]
+        
+        public HttpResponseMessage Post([FromBody] Emp emp)
+        {
+            EmpInfo hy = new EmpInfo();
+           hy.EmailId = emp.EmailId;
+            hy.Name = emp.Name;
+            hy.DateOfJoining = emp.DateOfJoining;
+            hy.PassCode = emp.PassCode;
+            bool ans = be.InsertEmployee(hy);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+
+
+
+        }
+        [Route("DeleteEmps/value/{value}")]
+       
+        public HttpResponseMessage Delete(string value)
+        {
+            bool ans = be.DeleteEmp(value);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+        }
+
+        [Route("UpdateEmps/value/{value}")]
+        
+        public HttpResponseMessage Put(string value, [FromBody] Emp p1)
+        {
+            EmpInfo hy1 = new EmpInfo();
+
+            hy1.EmailId = p1.EmailId;
+            hy1.Name = p1.Name;
+            hy1.DateOfJoining = p1.DateOfJoining;
+            hy1.PassCode = p1.PassCode;
+            
+            bool ans = be.UpdateEmployee(value, hy1);
+            if (ans)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+        }
+        [Route("Getallemp")]
+        public List<Emp> Get()
+        {
+            List<Emp> profiles = new List<Emp>();
+            List<EmpInfo> empbal = new List<EmpInfo>();
+            empbal = be.EmployeeList();
+            foreach (var item in empbal)
+            {
+                //Employees emp = new Employees();
+                profiles.Add(new Emp { EmailId = item.EmailId, Name = item.Name, DateOfJoining = item.DateOfJoining, PassCode = item.PassCode });
+            }
+
+            return profiles;
+        }
+
+    }
+}
+**********************************
+Blog.cs
+*********************
+namespace BlogWebApi.Models
+{
+    public class Blog
+    {
+        
+        public int BlogId { get; set; }
+        [DataType(DataType.Text)]
+        public string Title { get; set; }
+        [DataType(DataType.Text)]
+        public string Subject { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime DateOfCreation { get; set; }
+        [DataType(DataType.Url)]
+        public string BlogUrl { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string EmpEmailId { get; set; }
+    }
+}
+********************************
+Emp.cs
+*********************
+namespace BlogWebApi.Models
+{
+    public class Emp
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+       
+       
+        public string EmailId { get; set; }
+        [DataType(DataType.Text)]
+        public string Name { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime DateOfJoining { get; set; }
+        [DataType(DataType.Password)]
+        public int PassCode { get; set; }
+
+    }
+}
+*******************************
+MVC
+*****************
+*******************
+BlogController
+*********************
+namespace BlogTrakerHttpClient.Controllers
+{
+    public class BlogController : Controller
+    {
+        // GET: Blog
+        public ActionResult Index()
+        {
+            List<Blogee> emplist = new List<Blogee>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44363//GetallBlog");
+
+                var responseTask = client.GetAsync(client.BaseAddress);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readData = result.Content.ReadAsAsync<Blogee[]>();
+                    readData.Wait();
+                    var empdata = readData.Result;
+                    foreach (var item in empdata)
+                    {
+                        emplist.Add(new Blogee { BlogId = item.BlogId, Title = item.Title, Subject = item.Subject, DateOfCreation = item.DateOfCreation, BlogUrl = item.BlogUrl, EmpEmailId = item.EmpEmailId });
+
+                    }
+                }
+
+            }
+            return View(emplist);
+        }
+
+        public ActionResult AddNewEmployee()
+        {
+
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult AddNewEmployee(Blogee empmodel)
+        {
+
+            //if (ModelState.IsValid)
+            //{
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44363//AddBlog");
+
+                var emp = new Blogee { BlogId = empmodel.BlogId, Title = empmodel.Title, Subject = empmodel.Subject, DateOfCreation = empmodel.DateOfCreation, BlogUrl = empmodel.BlogUrl, EmpEmailId = empmodel.EmpEmailId };
+
+                var postTask = client.PostAsJsonAsync<Blogee>(client.BaseAddress, emp);
+                postTask.Wait();
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtaskResult = result.Content.ReadAsAsync<Blogee>();
+
+                    readtaskResult.Wait();
+                    var dataInserted = readtaskResult.Result;
+                }
+
+
+            }
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(FormCollection c)
+        {
+            string k = c["Email"].ToString();
+            string p = c["passcode"].ToString();
+            if (k == "nandhu@gmail.com" && p == "1035")
+            {
+                // return RedirectToRoute(new { action = "Index", controller = "Home", area = "" });
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Message1 = "Invalid username/password";
+                return View();
+            }
+        }
+    }
+}
+*****************************
+EmployeeController
+****************************
+****************************
+namespace BlogTrakerHttpClient.Controllers
+{
+    public class EmployeeController : Controller
+    {
+      
+        public ActionResult Index()
+        {
+            List<Emp1> emplist = new List<Emp1>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44363//Getallemp");
+
+                var responseTask = client.GetAsync(client.BaseAddress);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readData = result.Content.ReadAsAsync<Emp1[]>();
+                    readData.Wait();
+                    var empdata = readData.Result;
+                    foreach (var item in empdata)
+                    {
+                        emplist.Add(new Emp1 { EmailId = item.EmailId, Name = item.Name, DateOfJoining = item.DateOfJoining, PassCode = item.PassCode });
+
+                    }
+                }
+
+            }
+
+            return View(emplist);
+        }
+        public ActionResult AddNewEmployeee()
+        {
+
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult AddNewEmployeee(Emp1 empmodel)
+        {
+
+            //if (ModelState.IsValid)
+            //{
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44363//AddEmps");
+
+                var emp = new Emp1 { EmailId = empmodel.EmailId,Name = empmodel.Name, DateOfJoining = empmodel.DateOfJoining, PassCode = empmodel.PassCode  };
+
+                var postTask = client.PostAsJsonAsync<Emp1>(client.BaseAddress, emp);
+                postTask.Wait();
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtaskResult = result.Content.ReadAsAsync<Emp1>();
+
+                    readtaskResult.Wait();
+                    var dataInserted = readtaskResult.Result;
+                }
+
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(FormCollection c)
+        {
+            string k = c["Email"].ToString();
+            string p = c["password"].ToString();
+            if (k == "admin@gmail.com" && p == "N@ndhu")
+            {
+                // return RedirectToRoute(new { action = "Index", controller = "Home", area = "" });
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Message1 = "Invalid username/password";
+                return View();
+            }
+        }
+    }
+}
+*********************************
+DashBoardController
+***************************
+namespace BlogTrakerHttpClient.Controllers
+{
+    public class DashBoardController : Controller
+    {
+        // GET: DashBoard
+       public ActionResult dash()
+        {
+            return View();
+        }
+    }
+}
+*********************************
+Models:
+***************
+********************
+AdminLogin.cs
+*********************
+namespace BlogTrakerHttpClient.Models
+{
+    public class AdminLogin
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+
+
+        public string Email { get; set; }
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+}
+*****************************
+EmployeeLogin.cs
+******************************
+namespace BlogTrakerHttpClient.Models
+{
+    public class EmployeeLogin
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+
+
+        public string Email { get; set; }
+        [DataType(DataType.Password)]
+        public int PassCode { get; set; }
+    }
+}
+************************************
+

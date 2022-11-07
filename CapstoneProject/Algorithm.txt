@@ -1,0 +1,11 @@
+Steps:
+*********************
+1)first i created class library,in that create a database using code-first approach through ssms
+2) i created three tables(empinfo,blofinfo,admininfo)empinfo has 4 properties(emailid,name,dateofjoining,passcode)and blog info has 6 properties(blogid,title,subject,blogurl,empemailid,dateofjoining) and admin has 2 properties(email and password)
+3)in admininfo table used seed method(data is inserted, code is written through code).
+4)i created another class(Dal)in the same library,in that i done CRUD Operations for both admin and blog.
+5)i created a webapi,in that i added 2 controller(Blog Controller,EmpController) and 2 models(emp and Blog), in controller i added GET,PUT,POST,DELETE Verbs and run it through POSTMAN.
+6)i created a new MVC in that i called a web api through HTTPCLIENT,in a mvc i added a action for get and add for both emp and blog
+7)i created a 4 models(emp,blog,adminlogin,employeelogin)
+8)i created a view for each controller.
+9)i created an action for login for both admin and employee as well as logout action also for both.
